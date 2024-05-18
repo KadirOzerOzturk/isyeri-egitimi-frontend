@@ -1,0 +1,31 @@
+"filename", "language", "JavaScript", "JavaScript JSX", "JSON", "Markdown", "HTML", "comment", "blank", "total"
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\README.md", "Markdown", 0, 0, 0, 38, 0, 0, 33, 71
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\package-lock.json", "JSON", 0, 0, 18564, 0, 0, 0, 1, 18565
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\package.json", "JSON", 0, 0, 51, 0, 0, 0, 1, 52
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\public\index.html", "HTML", 0, 0, 0, 0, 20, 23, 1, 44
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\public\manifest.json", "JSON", 0, 0, 25, 0, 0, 0, 1, 26
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\App.js", "JavaScript", 6, 0, 0, 0, 0, 0, 0, 6
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\comission\ComissionLogin.jsx", "JavaScript JSX", 0, -52, 0, 0, 0, 0, -9, -61
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\commission\CommissionLogin.jsx", "JavaScript JSX", 0, 89, 0, 0, 0, 20, 19, 128
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\common_pages\ChangePassword.jsx", "JavaScript JSX", 0, 16, 0, 0, 0, 2, 0, 18
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\common_pages\Home.jsx", "JavaScript JSX", 0, 15, 0, 0, 0, 0, 4, 19
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\common_pages\ListCompanies.jsx", "JavaScript JSX", 0, 8, 0, 0, 0, 0, 3, 11
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\common_pages\ShowAnnouncementDetails.jsx", "JavaScript JSX", 0, 109, 0, 0, 0, 0, 19, 128
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\common_pages\UploadImage.jsx", "JavaScript JSX", 0, 70, 0, 0, 0, 0, 19, 89
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\common_pages\ViewCompanyProfile.jsx", "JavaScript JSX", 0, 11, 0, 0, 0, 0, 4, 15
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\common_pages\ViewStudentProfile.jsx", "JavaScript JSX", 0, -3, 0, 0, 0, -7, 5, -5
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\company\ApplyList.jsx", "JavaScript JSX", 0, 109, 0, 0, 0, 0, 25, 134
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\company\CompanyEditProfile.jsx", "JavaScript JSX", 0, 15, 0, 0, 0, -1, 2, 16
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\company\CompanyLogin.jsx", "JavaScript JSX", 0, 55, 0, 0, 0, 0, 12, 67
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\company\CompanyProfile.jsx", "JavaScript JSX", 0, -25, 0, 0, 0, 0, 2, -23
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\company\ShareAnnouncemet.jsx", "JavaScript JSX", 0, 185, 0, 0, 0, 1, 24, 210
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\components\Sidebar.jsx", "JavaScript JSX", 0, 37, 0, 0, 0, 6, 4, 47
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\index.js", "JavaScript", -9, 0, 0, 0, 0, 0, 1, -8
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\lecturer\LecturerLogin.jsx", "JavaScript JSX", 0, 35, 0, 0, 0, 20, 9, 64
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\student\FavoriteAnnouncements.jsx", "JavaScript JSX", 0, 3, 0, 0, 0, 0, -1, 2
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\student\StudentEditProfile.jsx", "JavaScript JSX", 0, -24, 0, 0, 0, 30, 6, 12
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\student\StudentLogin.jsx", "JavaScript JSX", 0, 1, 0, 0, 0, 0, 3, 4
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\student\StudentProfile.jsx", "JavaScript JSX", 0, -5, 0, 0, 0, 6, 2, 3
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\student\WeeklyReport.jsx", "JavaScript JSX", 0, -1, 0, 0, 0, 0, 1, 0
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\tailwind.config.js", "JavaScript", 12, 0, 0, 0, 0, 1, 3, 16
+"Total", "-", 9, 648, 18640, 38, 20, 101, 194, 19650

@@ -1,0 +1,36 @@
+Date : 2024-03-22 17:06:53
+Directory : c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src
+Total : 6 files,  -18620 codes, -24 comments, -39 blanks, all -18683 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |          1 |        -15 |         -1 |         -2 |        -18 |
+| HTML       |          1 |        -20 |        -23 |         -1 |        -44 |
+| Markdown   |          1 |        -38 |          0 |        -33 |        -71 |
+| JSON       |          3 |    -18,547 |          0 |         -3 |    -18,550 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                      | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                         |          6 |    -18,620 |        -24 |        -39 |    -18,683 |
+| ..                                                                                        |          6 |    -18,620 |        -24 |        -39 |    -18,683 |
+| .. (Files)                                                                                |          4 |    -18,575 |         -1 |        -37 |    -18,613 |
+| ..\public                                                                                 |          2 |        -45 |        -23 |         -2 |        -70 |
++-------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                  | language   | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\README.md            | Markdown   |        -38 |          0 |        -33 |        -71 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\package-lock.json    | JSON       |    -18,472 |          0 |         -1 |    -18,473 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\package.json         | JSON       |        -50 |          0 |         -1 |        -51 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\public\index.html    | HTML       |        -20 |        -23 |         -1 |        -44 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\public\manifest.json | JSON       |        -25 |          0 |         -1 |        -26 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\tailwind.config.js   | JavaScript |        -15 |         -1 |         -2 |        -18 |
+| Total                                                                                     |            |    -18,620 |        -24 |        -39 |    -18,683 |
++-------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

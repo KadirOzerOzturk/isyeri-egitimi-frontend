@@ -1,0 +1,32 @@
+"filename", "language", "JavaScript", "JavaScript JSX", "CSS", "comment", "blank", "total"
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\App.js", "JavaScript", 67, 0, 0, 0, 19, 86
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\comission\ComissionLogin.jsx", "JavaScript JSX", 0, 52, 0, 0, 9, 61
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\common_pages\ChangePassword.jsx", "JavaScript JSX", 0, 96, 0, 4, 14, 114
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\common_pages\Home.jsx", "JavaScript JSX", 0, 139, 0, 11, 16, 166
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\common_pages\ListCompanies.jsx", "JavaScript JSX", 0, 56, 0, 10, 12, 78
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\common_pages\LoginOptions.jsx", "JavaScript JSX", 0, 33, 0, 0, 4, 37
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\common_pages\NoPage.jsx", "JavaScript JSX", 0, 21, 0, 0, 3, 24
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\common_pages\ViewCompanyProfile.jsx", "JavaScript JSX", 0, 173, 0, 1, 36, 210
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\common_pages\ViewStudentProfile.jsx", "JavaScript JSX", 0, 186, 0, 7, 8, 201
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\company\CompanyEditProfile.jsx", "JavaScript JSX", 0, 178, 0, 9, 39, 226
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\company\CompanyLogin.jsx", "JavaScript JSX", 0, 54, 0, 0, 9, 63
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\company\CompanyProfile.jsx", "JavaScript JSX", 0, 184, 0, 1, 35, 220
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\components\FormInput.jsx", "JavaScript JSX", 0, 18, 0, 5, 2, 25
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\components\Navbar.jsx", "JavaScript JSX", 0, 70, 0, 0, 6, 76
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\components\Sidebar.jsx", "JavaScript JSX", 0, 151, 0, 0, 35, 186
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\forms\KabulFormu.jsx", "JavaScript JSX", 0, 63, 0, 0, 16, 79
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\forms\ListForms.jsx", "JavaScript JSX", 0, 47, 0, 0, 15, 62
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\index.css", "CSS", 0, 0, 4, 0, 1, 5
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\index.js", "JavaScript", 24, 0, 0, 0, 8, 32
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\lecturer\LecturerLogin.jsx", "JavaScript JSX", 0, 54, 0, 0, 9, 63
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\lecturer\ListStudentGroups.jsx", "JavaScript JSX", 0, 146, 0, 0, 15, 161
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\store\auth.jsx", "JavaScript JSX", 0, 23, 0, 0, 6, 29
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\store\companies.jsx", "JavaScript JSX", 0, 26, 0, 0, 6, 32
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\store\index.jsx", "JavaScript JSX", 0, 10, 0, 0, 1, 11
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\student\ApplyToCompany.jsx", "JavaScript JSX", 0, 109, 0, 4, 30, 143
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\student\FavoriteAnnouncements.jsx", "JavaScript JSX", 0, 108, 0, 2, 22, 132
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\student\StudentEditProfile.jsx", "JavaScript JSX", 0, 408, 0, 13, 47, 468
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\student\StudentLogin.jsx", "JavaScript JSX", 0, 108, 0, 0, 16, 124
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\student\StudentProfile.jsx", "JavaScript JSX", 0, 181, 0, 1, 40, 222
+"c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\student\WeeklyReport.jsx", "JavaScript JSX", 0, 135, 0, 1, 19, 155
+"Total", "-", 91, 2829, 4, 69, 498, 3491

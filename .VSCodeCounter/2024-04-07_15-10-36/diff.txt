@@ -1,0 +1,68 @@
+Date : 2024-04-07 15:10:36
+Directory : c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend
+Total : 29 files,  19355 codes, 101 comments, 194 blanks, all 19650 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| JSON           |          3 |     18,640 |          0 |          3 |     18,643 |
+| JavaScript JSX |         21 |        648 |         77 |        153 |        878 |
+| Markdown       |          1 |         38 |          0 |         33 |         71 |
+| HTML           |          1 |         20 |         23 |          1 |         44 |
+| JavaScript     |          3 |          9 |          1 |          4 |         14 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                              | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                 |         29 |     19,355 |        101 |        194 |     19,650 |
+| . (Files)                                                                                                         |          4 |     18,665 |          1 |         38 |     18,704 |
+| public                                                                                                            |          2 |         45 |         23 |          2 |         70 |
+| src                                                                                                               |         23 |        645 |         77 |        154 |        876 |
+| src (Files)                                                                                                       |          2 |         -3 |          0 |          1 |         -2 |
+| src\comission                                                                                                     |          1 |        -52 |          0 |         -9 |        -61 |
+| src\commission                                                                                                    |          1 |         89 |         20 |         19 |        128 |
+| src\common_pages                                                                                                  |          7 |        226 |         -5 |         54 |        275 |
+| src\company                                                                                                       |          5 |        339 |          0 |         65 |        404 |
+| src\components                                                                                                    |          1 |         37 |          6 |          4 |         47 |
+| src\lecturer                                                                                                      |          1 |         35 |         20 |          9 |         64 |
+| src\student                                                                                                       |          5 |        -26 |         36 |         11 |         21 |
++-------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                                                                          | language       | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\README.md                                    | Markdown       |         38 |          0 |         33 |         71 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\package-lock.json                            | JSON           |     18,564 |          0 |          1 |     18,565 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\package.json                                 | JSON           |         51 |          0 |          1 |         52 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\public\index.html                            | HTML           |         20 |         23 |          1 |         44 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\public\manifest.json                         | JSON           |         25 |          0 |          1 |         26 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\App.js                                   | JavaScript     |          6 |          0 |          0 |          6 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\comission\ComissionLogin.jsx             | JavaScript JSX |        -52 |          0 |         -9 |        -61 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\commission\CommissionLogin.jsx           | JavaScript JSX |         89 |         20 |         19 |        128 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\common_pages\ChangePassword.jsx          | JavaScript JSX |         16 |          2 |          0 |         18 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\common_pages\Home.jsx                    | JavaScript JSX |         15 |          0 |          4 |         19 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\common_pages\ListCompanies.jsx           | JavaScript JSX |          8 |          0 |          3 |         11 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\common_pages\ShowAnnouncementDetails.jsx | JavaScript JSX |        109 |          0 |         19 |        128 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\common_pages\UploadImage.jsx             | JavaScript JSX |         70 |          0 |         19 |         89 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\common_pages\ViewCompanyProfile.jsx      | JavaScript JSX |         11 |          0 |          4 |         15 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\common_pages\ViewStudentProfile.jsx      | JavaScript JSX |         -3 |         -7 |          5 |         -5 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\company\ApplyList.jsx                    | JavaScript JSX |        109 |          0 |         25 |        134 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\company\CompanyEditProfile.jsx           | JavaScript JSX |         15 |         -1 |          2 |         16 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\company\CompanyLogin.jsx                 | JavaScript JSX |         55 |          0 |         12 |         67 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\company\CompanyProfile.jsx               | JavaScript JSX |        -25 |          0 |          2 |        -23 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\company\ShareAnnouncemet.jsx             | JavaScript JSX |        185 |          1 |         24 |        210 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\components\Sidebar.jsx                   | JavaScript JSX |         37 |          6 |          4 |         47 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\index.js                                 | JavaScript     |         -9 |          0 |          1 |         -8 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\lecturer\LecturerLogin.jsx               | JavaScript JSX |         35 |         20 |          9 |         64 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\student\FavoriteAnnouncements.jsx        | JavaScript JSX |          3 |          0 |         -1 |          2 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\student\StudentEditProfile.jsx           | JavaScript JSX |        -24 |         30 |          6 |         12 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\student\StudentLogin.jsx                 | JavaScript JSX |          1 |          0 |          3 |          4 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\student\StudentProfile.jsx               | JavaScript JSX |         -5 |          6 |          2 |          3 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\src\student\WeeklyReport.jsx                 | JavaScript JSX |         -1 |          0 |          1 |          0 |
+| c:\Users\oztur\OneDrive\Masaüstü\Projeler\IsyeriProjeKodlar\frontend\tailwind.config.js                           | JavaScript     |         12 |          1 |          3 |         16 |
+| Total                                                                                                             |                |     19,355 |        101 |        194 |     19,650 |
++-------------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+

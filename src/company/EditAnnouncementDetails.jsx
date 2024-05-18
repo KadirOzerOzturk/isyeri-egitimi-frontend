@@ -15,6 +15,7 @@ function EditAnnouncementDetails() {
     const announcementId = parts[parts.length - 1];
     const [announcement, setAnnouncement] = useState({});
     const [criteriaList, setCriteriaList] = useState([]);
+    const [newCriteriaList, setNewCriteriaList] = useState([]);
     const [criteria, setCriteria] = useState("");
     const [postContent, setPostContent] = useState("");
     const [startDate, setStartDate] = useState();
@@ -32,10 +33,14 @@ function EditAnnouncementDetails() {
     };
 
     function addCriteria(criteriaDescription) {
-        const newCriteria = { kriterAciklama: criteriaDescription }; // Creating an object with the description
+        const newCriteria = { kriterAciklama: criteriaDescription };
+        setNewCriteriaList((prevCriteriaList) => [...prevCriteriaList, newCriteria])
+         // Creating an object with the description
         setCriteriaList((prevCriteriaList) => [...prevCriteriaList, newCriteria]);
         setCriteria(""); // Reset criteria input field
+        
     }
+    console.log("new criteria list ",newCriteriaList)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -75,15 +80,27 @@ function EditAnnouncementDetails() {
                 setPendingApiCall(false);
             });
     };
+    const saveCriteria = ()=>{
+        setPendingApiCall(true);
+        axios.post(`/announcementCriteria/save/${announcementId}`, newCriteriaList)
+            .catch(error => {
+                console.error("Request error: ", error);
+
+            })
+            .finally(() => {
+                setPendingApiCall(false);
+            });
+    }
 
     const handleUpdateClick = (e) => {
         e.preventDefault();
+        saveCriteria();
         updatePost();
     };
 
 
     const handleDeleteCriteria = (e, criteriaId) => {
-        axios.delete(`/announcementCriteria/delete/${announcementId}/${criteriaId}`)
+        axios.delete(`/announcementCriteria/delete/${criteriaId}`)
             .then(response => {
 
                 if (response.status===200) {
@@ -99,6 +116,7 @@ function EditAnnouncementDetails() {
             });
 
     }
+   
     
     return (
         <>

@@ -53,13 +53,14 @@ function Applications() {
                                 <div key={index} className='mb-4'>
                                 <div className="w-full px-4 py-2 bg-white rounded-lg shadow-md cursor-pointer" >
                                     <div onClick={() => navigate(`/announcement-details/${application.ilan.ilanId}`)}>
-                                        <div className="flex  items-center">
+                                        <div className="flex justify-between  items-center">
                                             <span className="mb-2 text-gray-600">
                                                 Başvuru Tarihi: {moment(application.basvuruTarihi).format("MM/DD/YYYY")}
                                             </span>
-                                            <h1 className='mb-2 mx-4 text-gray-600'>-</h1>
-                                            <h1 className='text-sm mb-2 ml-3 text-gray-600'>{application.basvuruDurum}</h1>
-
+                                            <div className='flex justify-between items-center gap-4'>
+                                            <h1 className='  text-gray-600'>Başvuru Durumu : </h1>
+                                            <h1 className='text-sm  text-gray-600'>{application.basvuruDurum}</h1>
+                                            </div>
                                             
                                         </div>
                                         <div className='flex justify-between'>

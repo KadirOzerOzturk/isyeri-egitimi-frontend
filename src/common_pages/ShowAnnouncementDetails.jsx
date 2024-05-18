@@ -33,7 +33,7 @@ function ShowAnnouncementDetails() {
                 console.log("res.data", announcementResponse.data);
                 if (announcementResponse.status === 200) {
                     setAnnouncement(announcementResponse.data);
-                } 
+                }
 
                 const criteriaResponse = await axios.get(`/announcementCriteria/${announcementId}`);
                 console.log(criteriaResponse.data);
@@ -127,7 +127,7 @@ function ShowAnnouncementDetails() {
     };
 
     if (announcement.firma?.firmaId !== user?.firmaId && userRole === "COMPANY") {
-        navigate("/not-found"); 
+        navigate("/not-found");
         return (
             <div>
                 <p>Yetkisiz erişim! Yönlendiriliyorsunuz...</p>
@@ -136,7 +136,7 @@ function ShowAnnouncementDetails() {
     }
     return (
         <div className="container mx-auto my-5 pl-24 pt-5 z-40">
-             {pendingApiCall ? < Loading text="Paylaşılıyor ..." /> : null}
+            {pendingApiCall ? < Loading text="Paylaşılıyor ..." /> : null}
             <div>
                 <div className='flex gap-8'>
                     <img className='h-36 w-52 shadow-lg rounded-md border-b-4 border-dark-blue cursor-pointer' onClick={() => navigate(`/company-profile/${announcement.firma.firmaId}`)} src={announcement.firma?.firmaLogo} alt="" />
@@ -160,12 +160,16 @@ function ShowAnnouncementDetails() {
                     <p className='p-2 px-8 font-normal mt-2 whitespace-pre-line'>
                         {announcement.aciklama}
                     </p>
-                    <h2 className='text-lg mt-2'>KRİTERLERİMİZ</h2>
-                    <ul className='p-2 px-8 font-normal mt-2'>
-                        {criterias.map((criteria, index) => (
-                            <li key={index} className='list-disc'>{criteria.kriterAciklama}</li>
-                        ))}
-                    </ul>
+                    {criterias.length !== 0 &&
+                        <>
+                            <h2 className='text-lg mt-2'>KRİTERLERİMİZ</h2>
+                            <ul className='p-2 px-8 font-normal mt-2'>
+                                {criterias.map((criteria, index) => (
+                                    <li key={index} className='list-disc'>{criteria.kriterAciklama}</li>
+                                ))}
+                            </ul>
+                        </>
+                    }
                 </div>
                 <div className='w-1/4 text-center h-screen'>
                     {userRole === "COMPANY" && announcement.firma?.firmaId === user?.firmaId && (

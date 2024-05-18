@@ -8,6 +8,7 @@ import { logout, setUser } from '../store/auth';
 import axios from 'axios';
 import moment from 'moment';
 import { MdOutlineAppRegistration } from 'react-icons/md';
+import Loading from '../components/Loading';
 
 
 function StudentProfile() {
@@ -20,6 +21,8 @@ function StudentProfile() {
     const [applications, setApplications] = useState([]);
     console.log(applications)
     const dispatch = useDispatch();
+    const [lecturer, setLecturer] = useState({})
+    const [pendingApiCall, setPendingApiCall] = useState(true)
 
 
     useEffect(() => {
@@ -33,6 +36,14 @@ function StudentProfile() {
                                 setApplications(res.data)
                             })
                     }
+                    axios.get(`/lecturer/getLecturerOfStudent/${user.ogrenciNo}`)
+                    .then(res => {
+                        setLecturer(res.data);
+                        setPendingApiCall(false)
+                    })
+                    .catch(error => {
+                        console.error("Error fetching comp:", error);
+                    });
                 })
                 .catch(error => {
                     console.error("Haftalik rapor yuklenirken hata oluştu:", error);
@@ -44,9 +55,10 @@ function StudentProfile() {
 
 
     return (
-
+        <>
+        {pendingApiCall && <Loading/>}
         <div className="container   mx-auto my-5 pl-32 pt-5 z-40  ">
-
+            
             <div className="  no-wrap md:-mx-2 ">
 
                 <div className="w-full ">
@@ -68,18 +80,7 @@ function StudentProfile() {
                         </div>
                         <hr className='my-4' />
                         <p className="text-md whitespace-pre-line bg-slate-100 rounded-lg p-3 text-gray-700 hover:text-gray-600 leading-6">{user.ogrenciHakkinda}</p>
-                        <ul
-                            className="bg-gray-100 text-gray-600 w-1/3 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
-                            <li className="flex items-center py-3">
-                                <span>Status</span>
-                                <span className="ml-auto"><span
-                                    className="bg-dark-blue py-1 px-2 rounded text-white text-md">Active</span></span>
-                            </li>
-                            <li className="flex items-center py-3">
-                                <span>Tahmini Mezuniyet Tarihi</span>
-                                <span className="ml-auto">Temmuz 2025</span>
-                            </li>
-                        </ul>
+                        
                     </div>
 
                     <div className="my-4"></div>
@@ -87,8 +88,8 @@ function StudentProfile() {
 
                 </div>
                 {/* hakkinda kismi */}
-                <div className="w-full md:w-9/12 mx-2 h-64">
-
+                <div className="w-full md:w-10/12 mx-2 h-64">
+                <div className='flex'>
                     <div className="bg-white p-3 shadow-sm rounded-sm">
                         <div className='flex  justify-between'>
 
@@ -120,23 +121,42 @@ function StudentProfile() {
                                     <p className="px-4 py-2">{user.ogrenciSinif}</p>
                                 </div>
                                 <div className="grid grid-cols-2">
-                                    <p className="px-4 py-2 font-semibold">AGNO :</p>
-                                    <p className="px-4 py-2">{user.ogrenciAgno}/4.00</p>
+                                    <p className="px-4 py-2 font-semibold">Telefon No :</p>
+                                    <p className="px-4 py-2">{user.ogrenciTelNo}</p>
                                 </div>
                                 <div className="grid grid-cols-2">
                                     <p className="px-4 py-2 font-semibold">Adres :</p>
                                     <p className="px-4 py-2">{user.ogrenciAdres}</p>
                                 </div>
                                 <div className="grid grid-cols-2">
+                                    <p className="px-4 py-2 font-semibold">AGNO :</p>
+                                    <p className="px-4 py-2">{user.ogrenciAgno} / 4.00</p>
+                                </div>
+                                
+                                <div className="grid grid-cols-2">
                                     <p className="px-4 py-2 font-semibold">Email :</p>
                                     <p className="px-4 py-2">
                                         <a href={"mailto:" + user.ogrenciEposta} >{user.ogrenciEposta}</a>
                                     </p>
                                 </div>
+                                
+                                
+                            </div>
 
                             </div>
                         </div>
+                        <ul
+                                className=" text-gray-600 w-1/3 hover:text-gray-700  py-2 px-3 mt-3 divide-y  border-l-2 border-black ml-4">
+                                <li className="flex items-center py-3">
+                                    <span className='text-black font-semibold'>Takip Eden Akademisyen</span>
+                                </li>
+                                <li className="flex justify-between items-center py-3">
+                                    <p onClick={() => navigate(`/lecturer-profile/${lecturer.izleyiciId}`)} className='text-blue-800 hover:text-blue-400 cursor-pointer'>{lecturer.izleyiciAd}  {lecturer.izleyiciSoyad}</p>
 
+                                    <a href={"mailto:" + lecturer.izleyiciEposta} className='text-blue-800 hover:text-blue-400 cursor-pointer text-center '>{lecturer.izleyiciEposta}</a>
+
+                                </li>
+                            </ul>
                     </div>
 
 
@@ -219,6 +239,7 @@ function StudentProfile() {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

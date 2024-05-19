@@ -232,7 +232,7 @@ function Sidebar() {
                             </li>
                             <div className='mt-auto'>
                             <li className='hover:bg-light-blue duration-200 hover:text-dark-blue' onClick={handleShowFeedback}>
-                                <span onClick={() => setShowFeedbackModal(!showFeedbackModal)} className="flex items-center p-2 rounded-lg text-white">
+                                <span onClick={() => setShowFeedbackModal(!showFeedbackModal)} className="flex items-center p-2 rounded-lg duration-200 text-white cursor-pointer hover:text-dark-blue">
                                     <BsFillQuestionOctagonFill className='text-2xl' />
                                     <span className="flex-1 ms-3 whitespace-nowrap items-stretch">Feedback</span>
                                 </span>

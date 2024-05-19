@@ -25,7 +25,7 @@ function ViewStudentProfile() {
     const { userRole } = useSelector(state => state.auth)
     const { user } = useSelector(state => state.auth)
     const [lecturer, setLecturer] = useState({})
-
+    const [handledApplicationId, setHandledApplicationId] = useState("")
     const navigate = useNavigate()
 
 
@@ -68,20 +68,18 @@ function ViewStudentProfile() {
             });
     }, [studentNo, user]);
 
-    const handleUpdateApplication = () => {
 
-    }
 
 
     // modal will be shown when the company wants to approve the application 
     const approveThepplication = (e) => {
-        e.preventDefault()
-        setShowModalForApprove(true)
+        e && e.preventDefault();
+        setShowModalForApprove(true);
     }
 
     const handleApproveApplication = () => {
 
-        axios.put(`/applications/update/${studentNo}/${user.firmaId}/Komisyon onayı bekleniyor`)
+        axios.put(`/applications/update/${handledApplicationId}/Komisyon onayı bekleniyor`)
             .then(res => {
                 window.location.reload()
 
@@ -104,14 +102,14 @@ function ViewStudentProfile() {
     };
     // modal will be shown when the company wants to refuse the application 
     const refuseThepplication = (e) => {
-        e.preventDefault()
-        setShowModalForRefuse(true)
+        e && e.preventDefault();     
+           setShowModalForRefuse(true)
         setPendingApiCall(false)
     }
 
     const handleRefuseApplication = () => {
 
-        axios.put(`/applications/update/${studentNo}/${user.firmaId}/Başvuru firma tarafından reddedildi.`)
+        axios.put(`/applications/update/${handledApplicationId}/Başvuru firma tarafından reddedildi.`)
             .then(res => {
                 window.location.reload()
                 setPendingApiCall(false)
@@ -134,8 +132,8 @@ function ViewStudentProfile() {
                         <div className="bg-white p-3 border-t-4 border-dark-blue">
                             <div className="image h-24 w-24 overflow-hidden">
                                 <img className="h-full w-full rounded-full mx-auto "
-                                src="https://i.pinimg.com/736x/ae/ec/c2/aeecc22a67dac7987a80ac0724658493.jpg"
-                                alt="" />
+                                    src="https://i.pinimg.com/736x/ae/ec/c2/aeecc22a67dac7987a80ac0724658493.jpg"
+                                    alt="" />
                             </div>
                             <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">{student.ogrenciAd + " " + student.ogrenciSoyad}</h1>
                             <div>
@@ -289,8 +287,8 @@ function ViewStudentProfile() {
                                                                 </li>
                                                                 {application.basvuruDurum === "Firma onayı bekleniyor." && (
                                                                     <div className='flex justify-between mt-2 py-2 gap-3'>
-                                                                        <button className='px-1 w-16  text-white  bg-green-500 rounded-md ' onClick={approveThepplication}>Onayla</button>
-                                                                        <button className='px-1 w-16  text-white  bg-red-500 rounded-md ' onClick={refuseThepplication}>Reddet</button>
+                                                                        <button className='px-1 w-16 text-white bg-green-500 rounded-md' onClick={() => { setHandledApplicationId(application.basvuruId); approveThepplication(); }}>Onayla</button>
+                                                                        <button className='px-1 w-16  text-white  bg-red-500 rounded-md ' onClick={() => { setHandledApplicationId(application.basvuruId); refuseThepplication(); }}>Reddet</button>
                                                                     </div>
                                                                 )}
 

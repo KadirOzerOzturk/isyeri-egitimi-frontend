@@ -12,6 +12,8 @@ import { CiLogout } from 'react-icons/ci';
 import { TfiAnnouncement } from "react-icons/tfi";
 
 import { MdEdit, MdGroups, MdOutlineAppRegistration } from "react-icons/md";
+import { BsFillQuestionOctagonFill } from 'react-icons/bs';
+import FeedbackModal from './FeedbackModal';
 
 function Sidebar() {
 
@@ -22,7 +24,7 @@ function Sidebar() {
     const { user } = useSelector(state => state.auth);
     const { userRole } = useSelector(state => state.auth);
     const [pendingApiCall, setPendingApiCall] = useState(true);
-
+    const [showFeedbackModal,setShowFeedbackModal]=useState(false)
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
@@ -93,7 +95,9 @@ function Sidebar() {
             navigate(`/commission-profile`)
         }
     }
-
+    const handleShowFeedback = () => {
+        setShowFeedbackModal(!showFeedbackModal);
+    };
 
     return (
 
@@ -103,15 +107,9 @@ function Sidebar() {
                 <div  className=' mr-3'>
                     <IoMdMenu  className='text-3xl ml-6 mt-3  cursor:pointer' onClick={toggleSidebar} />
                 </div>) : (
-                <aside id="logo-sidebar"  className="bg-dark-blue   fixed top-0 left-0 z-40 ${
-                isSidebarOpen 
-                    ? 'w-48' 
-                    : 'w-32 xl:w-48 2xl:w-64 h-screen' 
-            } h-screen transition-transform md-translate-x-full sm:translate-x-0" aria-label="Sidebar">
-
-
-
-                    <div  className="h-full px-3 py-4 overflow-y-auto ">
+                <aside id="logo-sidebar"  className="bg-dark-blue   fixed top-0 left-0 z-40 ${ isSidebarOpen ? 'w-48' 
+                    : 'w-32 xl:w-48 2xl:w-64 h-screen'} h-screen transition-transform md-translate-x-full sm:translate-x-0" aria-label="Sidebar">
+                <div className="flex flex-col h-full px-3 py-4 overflow-y-auto">
                         <div  className='bg-dark-blue mb-3 w-[30px] ml-auto  rounded-full '>
                             <IoMdMenu onClick={toggleSidebar}  className={` cursor:pointer text-3xl font-bold text-slate-400  bg-dark-blue `} />
                         </div>
@@ -122,7 +120,7 @@ function Sidebar() {
                         </a>
                         <hr  className='text-white pb-3' />
                         <ul  className="space-y-2 font-medium">
-                            <li  className='hover:bg-[#BCDCF5] duration-200  ' onClick={handleNavigate}>
+                            <li  className='hover:bg-light-blue duration-200  ' onClick={handleNavigate}>
                                 <a href=""  className="rounded-mg flex items-center p-2 rounded-lg text-white hover:text-dark-blue dark:hover:bg-light-blue group">
                                     <FaUser  className='text-xl' />
                                     {pendingApiCall ? <span  className="ms-3">
@@ -137,7 +135,7 @@ function Sidebar() {
                             </li>
                             {
                                 userRole !== 'COMPANY' && (
-                                    <li  className='hover:bg-[#BCDCF5]  duration-200  '>
+                                    <li  className='hover:bg-light-blue  duration-200  '>
                                         <a href="/companies"  className="rounded-mg flex items-center p-2  rounded-lg text-white hover:text-dark-blue  group">
                                             <FaBuilding  className='text-xl' />
                                             <span  className="ms-3">Firmalar</span>
@@ -147,7 +145,7 @@ function Sidebar() {
                             }
                             {
                                 userRole === 'LECTURER' && (
-                                    <li  className='hover:bg-[#BCDCF5]  duration-200 hover:text-dark-blue'>
+                                    <li  className='hover:bg-light-blue  duration-200 hover:text-dark-blue'>
                                         <a href="/student-group"  className="flex items-center p-2  rounded-lg text-white hover:text-dark-blue  group">
                                             <MdGroups  className='text-2xl' />
                                             <span  className="flex-1 ms-3 whitespace-nowrap">Gruptaki Ogrenciler</span>
@@ -160,13 +158,13 @@ function Sidebar() {
                                 userRole === 'COMPANY' && (
                                     <>
 
-                                        <li  className='hover:bg-[#BCDCF5]  duration-200 hover:text-dark-blue'>
+                                        <li  className='hover:bg-light-blue   duration-200 hover:text-dark-blue'>
                                             <a href="/share-announcement"  className="flex items-center p-2  rounded-lg text-white hover:text-dark-blue  group">
                                                 <TfiAnnouncement  className='text-xl' />
                                                 <span  className="flex-1 ms-3 whitespace-nowrap">İlan ver</span>
                                             </a>
                                         </li>
-                                        {/* <li  className='hover:bg-[#BCDCF5]  duration-200 hover:text-dark-blue'>
+                                        {/* <li  className='hover:bg-light-blue  duration-200 hover:text-dark-blue'>
                                             <a href="/apply-list"  className="flex items-center p-2  rounded-lg text-white hover:text-dark-blue  group">
                                                 <FaRegListAlt  className='text-xl opacity-80' />
                                                 <span  className="flex-1 ms-3 whitespace-nowrap">Başvuruları görüntüle</span>
@@ -178,20 +176,20 @@ function Sidebar() {
                             {
                                 userRole === 'STUDENT' && (<>
 
-                                    <li  className='hover:bg-[#BCDCF5] duration-200 hover:text-dark-blue'>
+                                    <li  className='hover:bg-light-blue duration-200 hover:text-dark-blue'>
                                         <a href="/applications"  className="flex items-center p-2  rounded-lg text-white hover:text-dark-blue  group">
                                             <MdOutlineAppRegistration  className='text-2xl' />
 
                                             <span  className="flex-1 ms-3 whitespace-nowrap">Başvurular</span>
                                         </a>
                                     </li>
-                                    <li  className='hover:bg-[#BCDCF5] duration-200 hover:text-dark-blue'>
+                                    <li  className='hover:bg-light-blue duration-200 hover:text-dark-blue'>
                                         <a href="/weekly-report"  className="flex items-center p-2  rounded-lg text-white hover:text-dark-blue  group">
                                             <MdEdit  className='text-2xl' />
                                             <span  className="flex-1 ms-3 whitespace-nowrap">Haftalık Rapor</span>
                                         </a>
                                     </li>
-                                    <li  className='hover:bg-[#BCDCF5] duration-200 hover:text-dark-blue'>
+                                    <li  className='hover:bg-light-blue duration-200 hover:text-dark-blue'>
                                         <a href="/favorite-announcements"  className="flex items-center p-2  rounded-lg text-white hover:text-dark-blue  group">
                                             <FaRegBookmark  className='text-2xl' />
                                             <span  className="flex-1 ms-3 whitespace-nowrap">Favori ilanlar</span>
@@ -202,27 +200,28 @@ function Sidebar() {
                                 )
                             }
 
-                            <li  className='hover:bg-[#BCDCF5] duration-200 hover:text-dark-blue'>
+                            <li  className='hover:bg-light-blue duration-200 hover:text-dark-blue'>
                                 <a href="#"  className="flex items-center p-2  rounded-lg text-white hover:text-dark-blue ">
                                     <IoIosMail  className='text-2xl' />
                                     <span  className="flex-1 ms-3 whitespace-nowrap">Gelen Kutusu</span>
                                     <span  className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-white ">3</span>
                                 </a>
                             </li>
-                            <li  className='hover:bg-[#BCDCF5] duration-200 hover:text-dark-blue'>
+                            <li  className='hover:bg-light-blue duration-200 hover:text-dark-blue'>
                                 <a href="/forms"  className="flex items-center p-2  rounded-lg text-white hover:text-dark-blue ">
                                     <FaWpforms  className='text-2xl' />
                                     <span  className="flex-1 ms-3 whitespace-nowrap">Formlar</span>
                                 </a>
                             </li>
-                            <li  className='hover:bg-[#BCDCF5] duration-200 hover:text-dark-blue'>
+                            <li  className='hover:bg-light-blue duration-200 hover:text-dark-blue'>
                                 <a href="#"  className="flex items-center p-2  rounded-lg text-white hover:text-dark-blue " >
 
                                     <RiSurveyFill  className='text-2xl' />
                                     <span  className="flex-1 ms-3 whitespace-nowrap">Anketler</span>
                                 </a>
                             </li>
-                            <li  className='hover:bg-[#BCDCF5] duration-200 hover:text-dark-blue'>
+                            
+                            <li  className='hover:bg-light-blue duration-200 hover:text-dark-blue'>
                                 <a onClick={() => {
                                     dispatch(logout());
                                     navigate("/login");
@@ -231,16 +230,25 @@ function Sidebar() {
                                     <span  className="flex-1 ms-3 whitespace-nowrap">Çıkış Yap</span>
                                 </a>
                             </li>
-
+                            <div className='mt-auto'>
+                            <li className='hover:bg-light-blue duration-200 hover:text-dark-blue' onClick={handleShowFeedback}>
+                                <span onClick={() => setShowFeedbackModal(!showFeedbackModal)} className="flex items-center p-2 rounded-lg text-white">
+                                    <BsFillQuestionOctagonFill className='text-2xl' />
+                                    <span className="flex-1 ms-3 whitespace-nowrap items-stretch">Feedback</span>
+                                </span>
+                            </li>
+                        </div>
                         </ul>
                     </div>
+                   
+
                 </aside>
             )}
 
+{showFeedbackModal && <FeedbackModal onClose={handleShowFeedback} />}
 
-
-
-
+            
+    
 
 
         </div>

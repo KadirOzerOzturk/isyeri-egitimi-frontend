@@ -18,6 +18,7 @@ function StudentLogin() {
   const [studentNumber, setStudentNumber] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate()
+  
   const handleStudentNumberChange = (e) => {
     const inputValue = e.target.value;
     const numericValue = parseInt(inputValue);

@@ -44,7 +44,8 @@ function App() {
       <Sidebar />
 
 
-      <div>
+      <div> 
+
         <Routes>
           <Route path="/upload-image" element={user != null ? <UploadImage /> : null} />
 
@@ -93,7 +94,9 @@ function App() {
 
 
         </Routes>
+        
       </div>
+      
     </div>
   );
 }

@@ -51,8 +51,14 @@ function LecturerEditProfile() {
              });
              
     };
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+        }
+    };
+
   return (
-    <form  className="container mx-auto my-5 pl-24 pt-5 z-40  ">
+    <form  className="container mx-auto my-5 pl-24 pt-5 z-40  " >
             <div  className="space-y-12">
                 <div  className="border-b border-gray-900/10 pb-12">
                     <h2  className="text-base font-semibold leading-7 text-gray-900">
@@ -146,7 +152,7 @@ function LecturerEditProfile() {
                                     </button>
                                 </div>
                             </div>
-                            <div  className="mx-auto pl-12 border-l-2">
+                            <div  className="mx-auto pl-12 border-l-2" onKeyPress={handleKeyPress}>
                                 <label
                                     htmlFor="password"
                                      className="block text-md font-medium leading-6 text-gray-900"
@@ -196,7 +202,7 @@ function LecturerEditProfile() {
 
             <div  className="mt-6 flex items-center justify-end gap-x-6">
                 <button
-                onClick={()=>navigate(`/company-profile`)}
+                onClick={()=>navigate(`/lecturer-profile`)}
                     type="button"
                      className="text-md font-semibold leading-6 text-gray-900"
                 >

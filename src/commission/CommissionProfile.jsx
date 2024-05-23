@@ -1,15 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { CiEdit } from 'react-icons/ci';
-import { TfiAnnouncement } from 'react-icons/tfi';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-function LecturerProfile() {
-    const navigate = useNavigate()
+function CommissionProfile() {
+  const navigate = useNavigate()
     const { user } = useSelector(state => state.auth);
     const { userRole } = useSelector(state => state.auth);
     
-
   return (
     <div>
         <div  className="container mx-auto my-5 pl-24 pt-5 z-40 font-roboto ">
@@ -24,9 +22,9 @@ function LecturerProfile() {
                                 alt="" />
                         </div>
                         <div className='flex justify-between'>
-                            <h1 className="text-gray-900 font-bold text-2xl leading-8 my-1">{user.izleyiciAd + " " + user.izleyiciSoyad} </h1>
+                            <h1 className="text-gray-900 font-bold text-2xl leading-8 my-1">{user.komisyonAd + " " + user.komisyonSoyad} </h1>
                             <div className='flex justify-between gap-2'>
-                                <div onClick={() => navigate('/lecturer-edit-profile')} className='cursor-pointer bg-gray-100 py-1 px-2 rounded-lg flex justify-between items-center gap-2'>
+                                <div onClick={() => navigate('/commission-edit-profile')} className='cursor-pointer bg-gray-100 py-1 px-2 rounded-lg flex justify-between items-center gap-2'>
                                     <span>Profili Düzenle</span>
                                     <CiEdit className='text-2xl' />
                                 </div>
@@ -36,7 +34,7 @@ function LecturerProfile() {
 
                         </div>
                         <div>
-                                <p className="text-md mt-4 bg-slate-100 rounded-lg p-3 text-gray-700 hover:text-gray-600 leading-6 whitespace-pre-line">{user.izleyiciHakkinda}</p>
+                                <p className="text-md mt-4 bg-slate-100 rounded-lg p-3 text-gray-700 hover:text-gray-600 leading-6 whitespace-pre-line">{user.komisyonHakkinda}</p>
 
                             </div>
                         {/* <ul
@@ -83,25 +81,19 @@ function LecturerProfile() {
                             <div  className="grid md:grid-cols-2 text-sm">
                                 <div  className="grid grid-cols-2">
                                     <p  className="px-4 py-2 font-semibold">Adı</p>
-                                    <p  className="px-4 py-2">{user.izleyiciAd}</p>
+                                    <p  className="px-4 py-2">{user.komisyonAd}</p>
                                 </div>
                                 <div  className="grid grid-cols-2">
                                     <p  className="px-4 py-2 font-semibold">Soyadı</p>
-                                    <p  className="px-4 py-2">{user.izleyiciSoyad}</p>
+                                    <p  className="px-4 py-2">{user.komisyonSoyad}</p>
                                 </div>
-                                <div  className="grid grid-cols-2">
-                                    <p  className="px-4 py-2 font-semibold">Fakülte</p>
-                                    <p  className="px-4 py-2">{user.izleyiciFakulte} </p>
-                                </div>
-                                <div  className="grid grid-cols-2">
-                                    <p  className="px-4 py-2 font-semibold">Fakülte</p>
-                                    <p  className="px-4 py-2">{user.izleyiciFakulte} </p>
-                                </div>
+                                
+                                
                                
                                 <div  className="grid grid-cols-2">
                                     <p  className="px-4 py-2 font-semibold">İletisim</p>
                                     <div  className="px-4 py-2">
-                                        <a  className="text-blue-800" href={"mailto:" + user.izleyiciEposta}> {user.izleyiciEposta}</a>
+                                        <a  className="text-blue-800" href={"mailto:" + user.komisyonEposta}> {user.komisyonEposta}</a>
                                     </div>
                                 </div>
 
@@ -119,7 +111,7 @@ function LecturerProfile() {
             </div>
         </div>
     </div>
-)
+  )
 }
 
-export default LecturerProfile
+export default CommissionProfile

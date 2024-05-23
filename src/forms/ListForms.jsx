@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { FaWpforms } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
 
 function ListForms() {
+    
 
+    
     const navigate=useNavigate()
     return (
         <div  className='container mx-auto my-5 pl-24 pt-5 z-40 grid-cols-4 grid font-roboto'>
@@ -29,6 +31,7 @@ function ListForms() {
                         <button
                             type="button"
                              className="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal bg-dark-blue text-white "
+                             onClick={()=>navigate('/kabul-formu')}
                         >
                             Indir
                         </button>

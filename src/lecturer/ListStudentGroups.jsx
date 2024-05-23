@@ -26,7 +26,7 @@ function ListStudentGroups() {
                 .then(res => {
                     console.log(res.data);
                     setGroups(res.data);
-                    axios.get(`/students-in-group/getAllStudents/`)
+                    axios.get(`/studentsInGroup/getAllStudents/`)
                         .then(res => {
                             console.log(res.data);
                             setStudentsInGroup(res.data);

@@ -84,6 +84,22 @@ function ChangePassword() {
                     console.error('Hata:', error);
                 });
         }
+        else if (currentPassword === user.komistonParola && userRole==="COMMISSION") {
+            changedUser.izleyiciParola = newPassword;
+            axios.put(`/commission/update/${user.izleyiciId}`, changedUser)
+                .then(response => {
+                    // Başarılı bir şekilde güncellendiğinde yapılacak işlemler
+                    if (response.status===200) {
+                        console.log('Parolaniz güncellendi:', response.data);
+                        toast.success('Parolaniz Güncellendi');
+                        navigate("/commission-profile")
+                    }
+                })
+                .catch(error => {
+                    // Hata durumunda yapılacak işlemler
+                    console.error('Hata:', error);
+                });
+        }
          else {
             toast.error("Mevcut parolanizi yanlis girdiniz!!!")
         }

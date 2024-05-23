@@ -14,15 +14,15 @@ function CommissionLogin() {
   const [capthcaResult,setCaptchaResult]=useState(false)
 
   const dispatch = useDispatch();
-  const [studentNumber, setStudentNumber] = useState('');
+  const [commissionNumber, setCommissionNumber] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate()
 
-  const handleStudentNumberChange = (e) => {
+  const handleCommissionNumber = (e) => {
     const inputValue = e.target.value;
     const numericValue = parseInt(inputValue);
     if (!isNaN(numericValue) || inputValue === '') {
-      setStudentNumber(inputValue);
+      setCommissionNumber(inputValue);
     }
   };
 
@@ -39,39 +39,46 @@ function CommissionLogin() {
     if (!captchaValue) {
       alert('Please verify the reCAPTCHA!')
     } else {
-      // make form submission
-      alert('Form submission successful!')
+      
+     
     }
   }
 
   console.log("capthcaResult :"+capthcaResult)
 
   const handleLogin = async (e) => {
-    // e.preventDefault();
-    // try {
-    //   const res = await axios.post('/auth/student-login', {
-    //     ogrenciNo: studentNumber,
-    //     parola: password,
-    //   });
-    //   if (res.status === 200) {
-    //     console.log("res" + res)
-    //     toast.success("Giriş başarılı ")
+    e.preventDefault();
+    const captchaValue = recaptcha.current.getValue()
+    setCaptchaResult(capthcaResult)
+    if (!captchaValue) {
+      alert('Please verify the reCAPTCHA!')
+    } else {
+     
+    try {
+      const res = await axios.post('/auth/commission-login', {
+        komisyonNo: commissionNumber,
+        komisyonParola: password,
+      });
+      if (res.status === 200) {
+        console.log("res" + res)
+        toast.success("Giriş başarılı ")
 
-    //     localStorage.setItem('userData', JSON.stringify(res.data));
+        localStorage.setItem('userData', JSON.stringify(res.data));
 
-    //     localStorage.setItem('userRole', 'STUDENT');
+        localStorage.setItem('userRole', 'COMMISSION');
         
-    //     dispatch(setUser(res.data)); 
-    //     navigate("/");
-    //   }
-    // } catch (error) {
-    //   if (error.response.data === "User not found" || error.response.data === "Password is not correct") {
-    //     toast.error('Kullanıcı adı veya parola yanlış !!');
-    //   }
-    //   console.log(error)
-    // }
+        dispatch(setUser(res.data)); 
+        navigate("/commission-profile");
+      }
+    } catch (error) {
+      if (error.response.data === "User not found" || error.response.data === "Password is not correct") {
+        toast.error('Kullanıcı adı veya parola yanlış !!');
+      }
+      console.log(error)
+    }
   };
-
+    
+}
 
   return (
     <div  className='relative h-screen flex justify-center items-center '>
@@ -87,13 +94,13 @@ function CommissionLogin() {
           <div  className="bg-slate-100  py-8 px-6 shadow rounded-lg sm:px-10">
             <form  className="mb-0 space-y-6" onSubmit={handleLogin}>
               <div>
-                <label htmlFor="studentNumber"  className="block text-sm font-medium text-gray-700">Komisyon Numarası</label>
+                <label htmlFor="commissionNumber"  className="block text-sm font-medium text-gray-700">Komisyon Numarası</label>
                 <div  className="mt-1">
                   <input
-                    onChange={handleStudentNumberChange}
-                    value={studentNumber}
-                    id="studentNumber"
-                    name="studentNumber"
+                    onChange={handleCommissionNumber}
+                    value={commissionNumber}
+                    id="commissionNumber"
+                    name="commissionNumber"
                     type="text"
                     pattern='\d'
                     autoComplete="off"
@@ -128,7 +135,7 @@ function CommissionLogin() {
               />
 
               <div>
-                <button onClick={(e) => submitForm(e)} type="submit"   className="disabled:cursor-not-allowed disabled:bg-slate-400 w-full flex justify-center py-2 px-4 border border-transparent rounded-md  text-sm font-medium  bg-dark-blue  shadow-sm text-white hover:bg-light-blue hover:text-dark-blue ">Giriş Yap</button>
+                <button onClick={(e) => handleLogin(e)} type="submit"   className="disabled:cursor-not-allowed disabled:bg-slate-400 w-full flex justify-center py-2 px-4 border border-transparent rounded-md  text-sm font-medium  bg-dark-blue  shadow-sm text-white hover:bg-light-blue hover:text-dark-blue ">Giriş Yap</button>
               </div>
             </form>
           </div>

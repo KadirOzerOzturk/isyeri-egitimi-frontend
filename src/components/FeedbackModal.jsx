@@ -2,13 +2,27 @@ import React, { useState } from 'react';
 import { MdOutlineClose } from 'react-icons/md';
 import emailjs from 'emailjs-com';
 import { Toaster, toast } from 'sonner';
+import { useSelector } from 'react-redux';
 
 const FeedbackModal = ({ onClose }) => {
+    const {user} =useSelector(state=>state.auth)
+    const {userRole} = useSelector(state=>state.auth)
     const [feedback, setFeedback] = useState({
         subject: '',
-        name: '',
-        surname: '',
-        email: '',
+        name: userRole === "STUDENT" ? user?.ogrenciAd 
+             : userRole === "LECTURER" ? user?.izleyiciAd 
+             : userRole === "COMPANY" ? user?.firmaAd 
+             : userRole === "COMMISSION" ? user?.komisyonAd 
+             : "",
+        surname: userRole === "STUDENT" ? user?.ogrenciSoyad
+        : userRole === "LECTURER" ? user?.izleyiciSoyad  
+        : userRole === "COMMISSION" ? user?.komisyonSoyad
+        : "",
+        email: userRole === "STUDENT" ? user?.ogrenciEposta 
+        : userRole === "LECTURER" ? user?.izleyiciEposta
+        : userRole === "COMPANY" ? user?.firmaEposta
+        : userRole === "COMMISSION" ? user?.komisyonEposta 
+        : "",
         content: '',
     });
 

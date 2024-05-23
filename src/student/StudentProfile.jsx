@@ -27,6 +27,7 @@ function StudentProfile() {
 
     useEffect(() => {
         if (user) {
+            
             axios.get(`/skills/getSkills/${user.ogrenciNo}`)
                 .then((res) => {
                     if (res.status === 200) {
@@ -56,8 +57,8 @@ function StudentProfile() {
 
     return (
         <>
-        {pendingApiCall && <Loading/>}
-        <div className="container   mx-auto my-5 pl-32 pt-5 z-40  ">
+        {pendingApiCall ? <Loading/> :
+        <div className="container   mx-auto pl-32 pt-4 z-40  ">
             
             <div className="  no-wrap md:-mx-2 ">
 
@@ -66,7 +67,7 @@ function StudentProfile() {
                     <div className="bg-white p-3 border-t-4 border-dark-blue">
                         <div className="image my-4 h-36 w-36 overflow-hidden">
                             <img className="h-auto w-full rounded-full mx-auto object-center "
-                                src="https://i.pinimg.com/736x/ae/ec/c2/aeecc22a67dac7987a80ac0724658493.jpg"
+                                src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png"
                                 alt="" />
                         </div>
                         <div className='flex justify-between'>
@@ -89,7 +90,7 @@ function StudentProfile() {
                 </div>
                 {/* hakkinda kismi */}
                 <div className="w-full md:w-10/12 mx-2 h-64">
-                <div className='flex'>
+                <div className='md:flex'>
                     <div className="bg-white p-3 shadow-sm rounded-sm">
                         <div className='flex  justify-between'>
 
@@ -165,7 +166,7 @@ function StudentProfile() {
 
                     <div className="bg-white p-3 shadow-sm rounded-sm">
 
-                        <div className="grid grid-cols-2 mb-12">
+                        <div className="grid md:grid-cols-2 mb-12">
                             <div className='text-lg'>
                                 <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
                                     <span clas="text-dark-blue">
@@ -220,9 +221,12 @@ function StudentProfile() {
                                     <ul className="list-inside space-y-2 w-full"> {/* Liste genişliğini ayarla */}
                                         {applications.map((application) => (
                                             <li className='border flex justify-between items-center border-black p-2 rounded-md border-opacity-50 mb-2'> {/* Li öğesinin altındaki boşlukları ayarla */}
-                                                <div>
+                                                <div className='w-2/3'>
                                                     <div className="text-dark-blue">{application.ilan.baslik}</div>
-                                                    <div className="text-gray-500 text-xs">{moment(application.ilan.baslangic_tarihi).format("MM/DD/YYYY")} - {moment(application.ilan.bitis_tarihi).format("MM/DD/YYYY")}</div>
+                                                    <div className='md:flex justify-between '>
+                                                        <p className="text-gray-500 text-xs">{moment(application.ilan.baslangic_tarihi).format("MM/DD/YYYY")} - {moment(application.ilan.bitis_tarihi).format("MM/DD/YYYY")}</p>
+                                                        <p className="text-gray-500 text-xs">{application.basvuruDurum}</p>
+                                                    </div>
                                                 </div>
                                                 <button onClick={() => navigate(`/announcement-details/${application.ilan.ilanId}`)} className='rounded-md p-1 bg-gray-200 px-2 cursor-pointer'>İlanı görüntüle</button>
                                             </li>
@@ -239,6 +243,7 @@ function StudentProfile() {
                 </div>
             </div>
         </div>
+        }
         </>
     )
 }

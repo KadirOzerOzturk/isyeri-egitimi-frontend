@@ -138,7 +138,7 @@ function Home() {
           null
       }
       {announcements.map((announcement) => (
-        <div key={announcement.ilanId}  className='px-3 py-2  mt-6 bg-slate-50 shadow-lg rounded-md '>
+        <div key={announcement.ilanId}  className='px-3 py-2  mt-6 w-full bg-slate-50 shadow-lg rounded-md '>
           <a  className='flex my-2 gap-3 cursor-pointer' onClick={()=>navigate(`/company-profile/${announcement.firma.firmaId}`)}>
             <img src={announcement.firma.firmaLogo} alt=""  className='h-12 w-12 items-stretch rounded-full' />
             <div>

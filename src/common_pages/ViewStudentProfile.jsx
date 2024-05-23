@@ -13,10 +13,12 @@ function ViewStudentProfile() {
 
     const [applications, setApplications] = useState([]);
     console.log("applications", applications)
+
     const location = useLocation();
     const { pathname } = location;
     const parts = pathname.split("/")
     const studentNo = parts[parts.length - 1]
+    
     const [student, setStudent] = useState();
     const [skills, setSkills] = useState([])
     const [showModalForApprove, setShowModalForApprove] = useState(false)
@@ -132,7 +134,7 @@ function ViewStudentProfile() {
                         <div className="bg-white p-3 border-t-4 border-dark-blue">
                             <div className="image h-24 w-24 overflow-hidden">
                                 <img className="h-full w-full rounded-full mx-auto "
-                                    src="https://i.pinimg.com/736x/ae/ec/c2/aeecc22a67dac7987a80ac0724658493.jpg"
+                                    src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png"
                                     alt="" />
                             </div>
                             <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">{student.ogrenciAd + " " + student.ogrenciSoyad}</h1>

@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Sidebar from "./components/Sidebar";
+import Navbar from "./components/Navbar";
 import LoginOptions from "./common_pages/LoginOptions";
 import NoPage from "./common_pages/NoPage";
 import ListForms from "./forms/ListForms";
@@ -32,16 +33,24 @@ import LecturerProfile from "./lecturer/LecturerProfile";
 import WeeklyReportPdf from "./forms/WeeklyReportPdf";
 import LecturerEditProfile from "./lecturer/LecturerEditProfile";
 import EditAnnouncementDetails from "./company/EditAnnouncementDetails";
-
+import ViewLecturerProfile from "./common_pages/ViewLecturerProfile";
+import CommissionProfile from "./commission/CommissionProfile";
+import CommissionEditProfile from "./commission/CommissionEditProfile";
+import EditStudentGroups from "./commission/EditStudentGroups";
 
 function App() {
   const { user } = useSelector(state => state.auth);
   console.log(user)
   return (
+    <>
+    
     <div  className="grid-cols-2">
 
-
+      <div>
+      <Navbar/>
       <Sidebar />
+      </div>
+      
 
 
       <div> 
@@ -83,9 +92,15 @@ function App() {
           {/* lecturer */}
           <Route path="/student-group" element={user !== null ? <ListStudentGroups /> : (<Navigate to="/login" replace />)} />
           <Route path="/lecturer-profile" element={user !== null ? <LecturerProfile /> : (<Navigate to="/login" replace />)} />
+          <Route path="/lecturer-profile/:id" element={user !== null ? <ViewLecturerProfile /> : (<Navigate to="/login" replace />)} />
           <Route path="/lecturer-edit-profile" element={user !== null ? <LecturerEditProfile /> : (<Navigate to="/login" replace />)} />
 
           {/* comission */}
+          
+          <Route path="/commission-profile" element={user !== null ? <CommissionProfile /> : (<Navigate to="/login" replace />)} />
+          <Route path="/commission-edit-profile" element={user !== null ? <CommissionEditProfile /> : (<Navigate to="/login" replace />)} />
+          <Route path="/edit-student-groups" element={user !== null ? <EditStudentGroups /> : (<Navigate to="/login" replace />)} />
+
 
           {/* Forms */}
           <Route path="/kabul-formu" element={user !== null ? <KabulFormu /> : (<Navigate to="/login" replace />)} />
@@ -98,6 +113,7 @@ function App() {
       </div>
       
     </div>
+    </>
   );
 }
 

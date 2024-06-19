@@ -2,11 +2,10 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { FaUser } from 'react-icons/fa';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import rektorluk from '../icons/gazi_rektorluk.jpg';
 import { useSelector } from 'react-redux';
-import { toast } from 'sonner';
 import AreYouSureModal from '../components/AreYouSureModal';
 import Loading from '../components/Loading';
+
 
 
 function ViewStudentProfile() {
@@ -52,7 +51,8 @@ function ViewStudentProfile() {
                 console.error("Haftalik rapor yuklenirken hata oluştu:", error);
             });
 
-        axios.get(`/applications/student/${studentNo}/${user?.firmaId}`)
+        if (userRole==="COMPANY") {
+            axios.get(`/applications/student/${studentNo}/${user?.firmaId}`)
             .then(res => {
                 setApplications(res.data);
                 setPendingApiCall(false)
@@ -60,6 +60,7 @@ function ViewStudentProfile() {
             .catch(error => {
                 console.error("Error fetching comp:", error);
             });
+        }
         axios.get(`/lecturer/getLecturerOfStudent/${studentNo}`)
             .then(res => {
                 setLecturer(res.data);
@@ -123,8 +124,11 @@ function ViewStudentProfile() {
                 setShowModalForRefuse(false);
             });
     };
+    // const handleDownloadPdf=()=>{
+    //     navigate(`/cv/${studentNo}`)
+    // }
     return (
-        <div className="container mx-auto my-5 pl-24 pt-5 z-40 font-roboto">
+        <div className="container mx-auto my-5 pl-24 pt-5 z-40 ">
             {pendingApiCall &&
                 <Loading />
             }
@@ -208,7 +212,7 @@ function ViewStudentProfile() {
                                     </div>
                                 </div>
                             </div>
-                            <ul
+                            {lecturer && <ul
                                 className=" text-gray-600 w-1/3 hover:text-gray-700  py-2 px-3 mt-3 divide-y  border-l-2 border-black ml-4">
                                 <li className="flex items-center py-3">
                                     <span className='text-black font-semibold'>Takip Eden Akademisyen</span>
@@ -219,7 +223,7 @@ function ViewStudentProfile() {
                                     <a href={"mailto:" + lecturer.izleyiciEposta} className='text-blue-800 hover:text-blue-400 cursor-pointer text-center '>{lecturer.izleyiciEposta}</a>
 
                                 </li>
-                            </ul>
+                            </ul>}
                         </div>
                         <div className="my-4"></div>
                         <div className="bg-white p-3 shadow-sm rounded-sm">
@@ -260,6 +264,7 @@ function ViewStudentProfile() {
                                     <p className="text-slate-500  pt-4">
                                         CV yeri
                                     </p>
+                                    {/* <button  onClick={handleDownloadPdf}   className='bg-red-500'>indir</button> */}
                                 </div>
                                 <div>
                                     {

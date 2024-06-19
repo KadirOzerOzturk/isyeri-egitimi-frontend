@@ -3,7 +3,7 @@ import mainLogo from '../icons/gazi_university_logo.png';
 import { useDispatch } from 'react-redux';
 import { Toaster, toast } from 'sonner';
 import axios from 'axios';
-import { setUser, setUserRole } from '../store/auth';
+import { setUser, setRole } from '../store/auth';
 import rektorluk from '../icons/gazi_rektorluk.jpg';
 import { useNavigate } from 'react-router-dom';
 import ReCAPTCHA from "react-google-recaptcha";
@@ -36,8 +36,8 @@ function LecturerLogin() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const captchaValue = recaptcha.current.getValue()
-    setCaptchaResult(capthcaResult)
+    // const captchaValue = recaptcha.current.getValue()
+    // setCaptchaResult(capthcaResult)
     // if (!captchaValue) {
     //   alert('Please verify the reCAPTCHA!')
     // } else {
@@ -55,6 +55,7 @@ function LecturerLogin() {
         localStorage.setItem('userRole', 'LECTURER');
 
         dispatch(setUser(res.data));
+        dispatch(setRole("LECTURER"))
         navigate("/");
       }
     } catch (error) {
@@ -63,7 +64,7 @@ function LecturerLogin() {
       }
       console.log(error)
     } 
-  // }
+  //}
   };
 
 
@@ -113,12 +114,12 @@ function LecturerLogin() {
                 </div>
               </div>
 
-              <ReCAPTCHA
+              {/* <ReCAPTCHA
                  className='cursor-pointer'
                 sitekey={process.env.REACT_APP_SITE_KEY}
                 onChange={()=>setCaptchaResult(true)}
                 ref={recaptcha}
-              />
+              /> */}
 
               <div>
                 <button onClick={(e) => handleLogin(e)} type="submit"   className="disabled:cursor-not-allowed disabled:bg-slate-400 w-full flex justify-center py-2 px-4 border border-transparent rounded-md  text-sm font-medium  bg-dark-blue  shadow-sm text-white hover:bg-light-blue hover:text-dark-blue ">Giriş Yap</button>

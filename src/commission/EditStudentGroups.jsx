@@ -22,6 +22,7 @@ function EditStudentGroups() {
   const [showCreateGroupModal, setShowCreateGroupModal] = useState(false);
   const [showAddStudentModal, setShowAddStudentModal] = useState(false);
   const [showAreYouSureModal, setShowAreYouSureModal] = useState(false);
+  const [showAreYouSureModalDiscardFromStudent,setShowAreYouSureModalDiscardFromStudent]= useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [showStudents, setShowStudents] = useState(false);
   const [pendingApiCall, setPendingApiCall] = useState(false);
@@ -33,13 +34,15 @@ function EditStudentGroups() {
     if (user) {
       axios.get(`/groups`)
         .then(res => {
-          setGroups(res.data);
+
+            setGroups(res.data);
           return axios.get(`/studentsInGroup/getAllStudents/`);
         })
         .then(res => {
           setStudentsInGroup(res.data);
         })
         .catch(error => {
+          setGroups(null);
           console.error("Error fetching data:", error);
         });
     }
@@ -86,7 +89,7 @@ function EditStudentGroups() {
   const handleDeleteStudentFromGroup = (e, studentNo) => {
     e.preventDefault();
     setSelectedStudentNo(studentNo);
-    setShowAreYouSureModal(true);
+    setShowAreYouSureModalDiscardFromStudent(true);
   };
  
 
@@ -239,7 +242,7 @@ function EditStudentGroups() {
       </div>
       {showAddStudentModal && <AddStudentToGroupModal onClose={handleShowAddStudentModal} selectedGroupId={selectedGroupId} />}
       {showCreateGroupModal && <CreateStudentGroupModal onClose={handleCreateGroupModal} />}
-      {showAreYouSureModal ? (
+      {showAreYouSureModalDiscardFromStudent ? (
         <AreYouSureModal
           title="Emin Misin?"
           text="Öğrenciyi gruptan çıkartmak istediğinize emin misiniz?"

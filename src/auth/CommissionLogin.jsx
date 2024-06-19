@@ -50,9 +50,9 @@ function CommissionLogin() {
     e.preventDefault();
     const captchaValue = recaptcha.current.getValue()
     setCaptchaResult(capthcaResult)
-    if (!captchaValue) {
-      alert('Please verify the reCAPTCHA!')
-    } else {
+    // if (!captchaValue) {
+    //   alert('Please verify the reCAPTCHA!')
+    // } else {
      
     try {
       const res = await axios.post('/auth/commission-login', {
@@ -76,7 +76,7 @@ function CommissionLogin() {
       }
       console.log(error)
     }
-  };
+ // };
     
 }
 

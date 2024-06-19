@@ -31,7 +31,7 @@ function Navbar({ setIsSidebarOpen, isSidebarOpen }) {
   }
   
   return (
-    <div className="bg-dark-blue  flex items-center text-center justify-between p-3   top-0 w-full ">
+    <div className="bg-dark-blue  flex items-center text-center justify-between p-3  h-20 top-0  w-full ">
       
       <div className="w-full justify-center flex items-center h-16 text-slate-200 font-bold p-2 rounded-md ">
       <a href={userRole === "COMPANY" ? "/company-profile" : "/"} >

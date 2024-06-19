@@ -3,7 +3,7 @@ import mainLogo from '../icons/gazi_university_logo.png';
 import { useDispatch } from 'react-redux';
 import { Toaster, toast } from 'sonner';
 import axios from 'axios';
-import { setUser, setUserRole } from '../store/auth';
+import { setUser, setRole } from '../store/auth';
 import rektorluk from '../icons/gazi_rektorluk.jpg';
 import { useNavigate } from 'react-router-dom';
 import ReCAPTCHA from "react-google-recaptcha";
@@ -52,6 +52,7 @@ function StudentLogin() {
           localStorage.setItem('userRole', 'STUDENT');
 
           dispatch(setUser(res.data));
+          dispatch(setRole("STUDENT"))
           navigate("/");
         }
       } catch (error) {

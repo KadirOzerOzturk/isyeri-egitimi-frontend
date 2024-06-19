@@ -184,7 +184,7 @@ function ShowAnnouncementDetails() {
                         userRole !== "STUDENT" ?
                             null
                             :
-                            <button className='text-xl bg-red-500 rounded-3xl py-2 text-white px-6 text-center hover:bg-red-600  duration-200' onClick={(e) => cancelApplication(e)}>Başvuruyu Geri Çek</button>
+                            <p className='text-xl bg-dark-blue rounded-md  py-2 text-white  text-center   '>Başvurunuz alınmıştır.</p>
                     }
                     <div className='mt-3 bg-gray-100 text-center rounded-xl'>
                         <h1 className='bg-gray-300 w-full p-3 rounded-xl'>İlan Bilgileri</h1>

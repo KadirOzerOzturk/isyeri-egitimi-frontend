@@ -103,7 +103,9 @@ export default function CompanyEditProfile() {
                                 >
                                     Adres : 
                                 </h1>
-                                <p  className="text-sm  text-slate-600">{user.firmaAdres}</p>
+                                
+                                <input defaultValue={user.firmaAdres} name="firmaAdres" onChange={handleInputChange}  className="text-sm  border-2 rounded-md p-1 text-slate-600" />
+
                             </div>
                             
                             

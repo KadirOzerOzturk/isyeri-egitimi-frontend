@@ -34,9 +34,9 @@ function CompanyLogin() {
     e.preventDefault();
     const captchaValue = recaptcha.current.getValue()
     setCaptchaResult(capthcaResult)
-    if (!captchaValue) {
-      alert('Please verify the reCAPTCHA!')
-    } else {
+    // if (!captchaValue) {
+    //   alert('Please verify the reCAPTCHA!')
+    // } else {
     try {
       const res = await axios.post('/auth/company-login', {
         firmaNo: companyNumber,
@@ -59,7 +59,7 @@ function CompanyLogin() {
       }
       console.log(error)
     } 
-  }
+  //}
   };
 
 

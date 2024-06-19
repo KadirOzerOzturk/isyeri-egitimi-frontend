@@ -5,6 +5,7 @@ import { TfiAnnouncement } from 'react-icons/tfi';
 import { useSelector } from 'react-redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import moment from "moment";
+import { FaUser } from 'react-icons/fa';
 
 function CompanyProfile() {
 
@@ -40,9 +41,11 @@ function CompanyProfile() {
 
                         <div className="bg-white p-3 border-t-4 border-dark-blue">
                             <div className="image h-24 w-24 overflow-hidden">
-                                <img className="h-auto w-full mx-auto rounded-full "
-                                    src={company?.firmaLogo}
-                                    alt="" />
+                                
+                                
+                                {company.firmaLogo ? <img className="h-auto w-full mx-auto rounded-full "
+                                    src={company.firmaLogo }
+                                    alt="" /> :<FaUser/>}
                             </div>
                             <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">{company.firmaAd}</h1>
                             <h3 className="text-gray-600 font-lg text-semibold leading-6">{company.firmaHakkinda}</h3>

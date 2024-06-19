@@ -79,6 +79,8 @@ function ShareAnnouncement() {
                 console.error("Request error: ", error);
 
             });
+            setPendingApiCall(false)
+
     }
 
     function handleShareClick(e) {
@@ -156,7 +158,9 @@ function ShareAnnouncement() {
                             </p>
                             <hr className='my-4' />
                             <div className="mt-2 lg:flex   items-center   rounded-md">
-                                <h1 className=' lg:mr-6 text-nowrap it'>Başvuruların başlangıç ve bitiş aralığını seçiniz .  (calismiyor simdilik bugun baslayip 30 gun sonra bitiyor ) </h1>
+                                {/* <h1 className=' lg:mr-6 text-nowrap it'>Başvuruların başlangıç ve bitiş aralığını seçiniz .  (calismiyor simdilik bugun baslayip 30 gun sonra bitiyor ) </h1> */}
+                                <h1 className=' lg:mr-6 text-nowrap it'>Başvuruların başlangıç ve bitiş aralığını seçiniz . </h1>
+
                                 <Datetime onChange={setStartDate} dateFormat={true}     value={startDate} locale='tr' placeholder='N/A'className=' appearance-none shadow border focus:border-none cursor-pointer h-8 text-center px-3'/>
                                 <p className='mx-4'>-</p>         
                                  <Datetime onChange={setEndDate} dateFormat value={endDate} locale='tr'placeholder= 'N/A' className=' appearance-none shadow border focus:border-none cursor-pointer h-8 text-center px-3'/>

@@ -37,6 +37,8 @@ import ViewLecturerProfile from "./common_pages/ViewLecturerProfile";
 import CommissionProfile from "./commission/CommissionProfile";
 import CommissionEditProfile from "./commission/CommissionEditProfile";
 import EditStudentGroups from "./commission/EditStudentGroups";
+import SaveCompany from "./commission/SaveCompany";
+import CV from "./filesForPdf/CV";
 
 function App() {
   const { user } = useSelector(state => state.auth);
@@ -47,8 +49,8 @@ function App() {
     <div  className="grid-cols-2">
 
       <div>
-      <Navbar/>
-      <Sidebar />
+      {/* <Navbar/> */}
+      {user&& <Sidebar />}
       </div>
       
 
@@ -100,12 +102,14 @@ function App() {
           <Route path="/commission-profile" element={user !== null ? <CommissionProfile /> : (<Navigate to="/login" replace />)} />
           <Route path="/commission-edit-profile" element={user !== null ? <CommissionEditProfile /> : (<Navigate to="/login" replace />)} />
           <Route path="/edit-student-groups" element={user !== null ? <EditStudentGroups /> : (<Navigate to="/login" replace />)} />
+          <Route path="/save-company" element={user !== null ? <SaveCompany /> : (<Navigate to="/login" replace />)} />
 
 
           {/* Forms */}
           <Route path="/kabul-formu" element={user !== null ? <KabulFormu /> : (<Navigate to="/login" replace />)} />
           <Route path="/forms" element={user !== null ? <ListForms /> : (<Navigate to="/login" replace />)} />
           <Route path="/weekly-report-pdf" element={user !== null ? <WeeklyReportPdf /> : (<Navigate to="/login" replace />)} />
+          <Route path="/cv/:studentNo" element={user !== null ? <CV/> : (<Navigate to="/login" replace />)} />
 
 
         </Routes>

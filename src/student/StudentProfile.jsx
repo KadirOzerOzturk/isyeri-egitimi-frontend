@@ -146,7 +146,7 @@ function StudentProfile() {
 
                             </div>
                         </div>
-                        <ul
+                        {lecturer && <ul
                                 className=" text-gray-600 w-1/3 hover:text-gray-700  py-2 px-3 mt-3 divide-y  border-l-2 border-black ml-4">
                                 <li className="flex items-center py-3">
                                     <span className='text-black font-semibold'>Takip Eden Akademisyen</span>
@@ -157,7 +157,7 @@ function StudentProfile() {
                                     <a href={"mailto:" + lecturer.izleyiciEposta} className='text-blue-800 hover:text-blue-400 cursor-pointer text-center '>{lecturer.izleyiciEposta}</a>
 
                                 </li>
-                            </ul>
+                            </ul>}
                     </div>
 
 

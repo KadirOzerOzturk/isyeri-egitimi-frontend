@@ -43,7 +43,7 @@ function ListStudentGroups() {
 
     const showStudents = (e, groupId) => {
         e.preventDefault();
-        axios.get(`/students-in-group/getStudents/${groupId}`)
+        axios.get(`/studentsInGroup/getStudents/${groupId}`)
             .then(res => {
                 console.log(res.data);
                 setStudentsInSelectedGroup(res.data);

@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Home() {
   const [announcements, setAnnouncements] = useState([])
+  const [posts, setPosts] = useState([])
   const { user } = useSelector(state => state.auth)
   const { userRole } = useSelector(state => state.auth)
   const navigate = useNavigate()
@@ -23,9 +24,10 @@ function Home() {
     
       axios.get(`/announcements`)
         .then(res => {
-          loadFavorites()
-          console.log(res.data);
+          loadFavorites(user.ogrenciNo)
           setAnnouncements(res.data);
+          setPosts(res.data.filter(announcement=>announcement.postBaslik !== ""))
+          setPendingApiCall(false)
         })
         .catch(error => {
           console.error("Error fetching announcements:", error);
@@ -89,7 +91,7 @@ function Home() {
           console.log("Favori ilan başarıyla eklendi:", response.data);
           // Favori ilan başarıyla eklendikten sonra gerekli işlemleri yapabilirsiniz
           // Örneğin, favorileri güncelleyebilirsiniz
-          loadFavorites()
+          loadFavorites(user.ogrenciNo)
         })
         .catch(error => {
           console.error("Favori ilan eklenirken hata oluştu:", error);
@@ -97,9 +99,9 @@ function Home() {
         });
     }
   }
-  function loadFavorites() {
+  function loadFavorites(ogrenciNo) {
     if (userRole === "STUDENT") {
-      axios.get(`/favorites/${user.ogrenciNo}`)
+      axios.get(`/favorites/${ogrenciNo}`)
         .then(res => {
           console.log("Favorites loaded successfully:", res.data);
           setFavorites(res.data);
@@ -137,47 +139,47 @@ function Home() {
           :
           null
       }
-      {announcements.map((announcement) => (
-        <div key={announcement.ilanId}  className='px-3 py-2  mt-6 w-full bg-slate-50 shadow-lg rounded-md '>
-          <a  className='flex my-2 gap-3 cursor-pointer' onClick={()=>navigate(`/company-profile/${announcement.firma.firmaId}`)}>
-            <img src={announcement.firma.firmaLogo} alt=""  className='h-12 w-12 items-stretch rounded-full' />
+      {posts.map((post) => (
+        <div key={post.ilanId}  className='px-3 py-2  mt-6 w-full bg-slate-50 shadow-lg rounded-md '>
+          <a  className='flex my-2 gap-3 cursor-pointer' onClick={()=>navigate(`/company-profile/${post.firma.firmaId}`)}>
+            <img src={post.firma.firmaLogo} alt=""  className='h-12 w-12 items-stretch rounded-full' />
             <div>
-              <p  className='font-semibold'>{announcement.firma.firmaAd}</p>
-              <p  className='text-sm text-slate-700'>{calculateTimeDifference(announcement.baslangic_tarihi)} </p>
+              <p  className='font-semibold'>{post.firma.firmaAd}</p>
+              <p  className='text-sm text-slate-700'>{calculateTimeDifference(post.baslangic_tarihi)} </p>
             </div>
           </a>
 
           <hr />
           <div  className='pt-3 text-md text-slate-800 shadow-sm border p-2 border-spacing-2 border-transparent rounded-md   ' >
-             <h1 >{announcement.postBaslik}</h1>
+             <h1 >{post.postBaslik}</h1>
           </div>
          
           <hr />
           <div  className='h-64'>
-            <img src={announcement.firma.firmaLogo} alt=""  className='rounded-lg  mt-2 h-full w-full' />
+            <img src={post.firma.firmaLogo} alt=""  className='rounded-lg  mt-2 h-full w-full' />
           </div>
 
           {userRole === "STUDENT" && (
             favorites.some(
               (favorite) =>
-                favorite.ilan.ilanId === announcement.ilanId &&
+                favorite.ilan.ilanId === post.ilanId &&
                 favorite.ogrenci.ogrenciNo === user.ogrenciNo
             ) ? (
               <div  className='flex justify-between items-center'>
-                <div onClick={() => handleFavorite(announcement)}  className="flex gap-2 items-center">
+                <div onClick={() => handleFavorite(post)}  className="flex gap-2 items-center">
                   <FaBookmark  className="mt-4 text-2xl text-slate-800 cursor-pointer" />
                   <h1  className="mt-4 text-sm cursor-pointer">Favorilerinden kaldır</h1>
                 </div>
-                <button onClick={()=>navigate(`/announcement-details/${announcement.ilanId}`)}  className='bg-dark-blue text-white mt-2 px-2 py-1  text-sm rounded-xl'>Detayları görüntüle</button>
+                <button onClick={()=>navigate(`/announcement-details/${post.ilanId}`)}  className='bg-dark-blue text-white mt-2 px-2 py-1  text-sm rounded-xl'>Detayları görüntüle</button>
               </div>
             ) : (
               <div  className='flex justify-between items-center'>
-                <div onClick={() => handleFavorite(announcement)}  className="flex gap-2 items-center">
+                <div onClick={() => handleFavorite(post)}  className="flex gap-2 items-center">
                   <FaRegBookmark  className="mt-4 text-2xl cursor-pointer" />
                   <h1  className="mt-4 text-sm cursor-pointer">Favorilerine ekle</h1>
 
                 </div>
-                <button onClick={()=>navigate(`/announcement-details/${announcement.ilanId}`)}  className='bg-dark-blue text-white mt-2 px-2 py-1  text-sm rounded-xl'>Detayları görüntüle</button>
+                <button onClick={()=>navigate(`/announcement-details/${post.ilanId}`)}  className='bg-dark-blue text-white mt-2 px-2 py-1  text-sm rounded-xl'>Detayları görüntüle</button>
               </div>
             )
           )}

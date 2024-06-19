@@ -15,73 +15,21 @@ import { BsFillQuestionOctagonFill } from 'react-icons/bs';
 import FeedbackModal from './FeedbackModal';
 import Loading from './Loading';
 import { IoHome } from 'react-icons/io5';
+import Navbar from "./Navbar";
 
 function Sidebar() {
+    console.log("SIDEBAAAARRRR")
+
 
     const navigate = useNavigate();
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const dispatch = useDispatch();
     const { user, userRole } = useSelector(state => state.auth);
-    const [pendingApiCall, setPendingApiCall] = useState(true);
     const [showFeedbackModal, setShowFeedbackModal] = useState(false);
 
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const userData = JSON.parse(localStorage.getItem("userData"));
-            const role = localStorage.getItem("userRole");
-            console.log("userData : ", userData)
-            console.log("userRole : ", role)
-            if (userData && role) {
-                let endpoint = '';
-                if (role === "STUDENT") endpoint = `/students/${userData?.ogrenciNo}`;
-                else if (role === "COMPANY") endpoint = `/company/${userData?.firmaId}`;
-                else if (role === "LECTURER") endpoint = `/lecturer/${userData?.izleyiciId}`;
-                else if (role === "COMMISSION") endpoint = `/commission/${userData?.komisyonId}`;
-
-                if (endpoint) {
-                    try {
-                        const res = await axios.get(endpoint);
-                        if (res.status === 200) {
-                            dispatch(setUser(res.data));
-                            setPendingApiCall(false);
-                            console.log('User data fetched and set:', res.data);
-                        }
-                    } catch (error) {
-                        console.error('Error fetching data:', error);
-                    }
-                }
-            }
-        };
-
-        fetchData();
-    }, [dispatch, pendingApiCall]);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(window.innerWidth);
-            if (window.innerWidth > 1280) {
-                setIsSidebarOpen(false);
-            } else {
-                setIsSidebarOpen(true);
-            }
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, [windowWidth]);
-
-
-    if (!user) {
-        return null; // Kullanıcı giriş yapmamışsa, sidebar'ı gösterme
-    }
 
     const handleNavigate = () => {
         if (userRole === "STUDENT") navigate(`/student-profile`);
@@ -103,8 +51,9 @@ function Sidebar() {
 
     return (
         <>
-            {pendingApiCall && <Loading />}
+
             <div>
+                <Navbar />
                 {isSidebarOpen ? (
                     <div className='mr-3'>
                         <IoMdMenu className='text-3xl ml-6 mt-3 cursor:pointer' onClick={toggleSidebar} />
@@ -115,27 +64,35 @@ function Sidebar() {
                             <div className='bg-dark-blue mb-3 w-[30px]  ml-auto rounded-full'>
                                 <IoMdMenu onClick={toggleSidebar} className='cursor:pointer text-3xl font-bold text-slate-400 bg-dark-blue' />
                             </div>
-                            
 
+                            <div className="w-full justify-center flex items-center gap-3 p-2   text-slate-200 font-bold rounded-md ">
+                                <a href={userRole === "COMPANY" ? "/company-profile" : "/"} >
+                                    <img src={mainLogo} className="h-12 " alt="Gazi Logo" />
+                                </a>
+                                <span className="self-center text-xl md:text-lg sm:text-xs font-semibold  text-white">İş Yeri Eğitimi Platformu</span>
+
+                            </div>
                             <hr className='text-white pb-3' />
                             <div className="flex-grow">
                                 <ul className="space-y-2 font-medium">
                                     <li className='hover:bg-light-blue duration-200' onClick={handleNavigate}>
                                         <a href="#" className="flex items-center p-2 rounded-lg text-white hover:text-dark-blue dark:hover:bg-light-blue group">
                                             <FaUser className='text-xl' />
-                                            {pendingApiCall ? <span className="ms-3">Yukleniyor</span> : (
-                                                <span className="ms-3">
-                                                    {userRole === "STUDENT" && user?.ogrenciAd && user?.ogrenciSoyad && `${user.ogrenciAd} ${user.ogrenciSoyad}`}
-                                                    {userRole === "COMPANY" && `${user?.firmaAd}`}
-                                                    {userRole === "LECTURER" && `${user?.izleyiciAd} ${user?.izleyiciSoyad}`}
-                                                    {userRole === "COMMISSION" && `${user?.komisyonAd} ${user?.komisyonSoyad}`}
-                                                </span>
-                                            )}
+
+                                            {user&&<span className="ms-3">
+                                                {console.log("COMMISSION")}
+                                                {console.log(user)}
+                                                {userRole === "STUDENT" && user?.ogrenciAd && user?.ogrenciSoyad && `${user.ogrenciAd} ${user.ogrenciSoyad}`}
+                                                {userRole === "COMPANY" && `${user?.firmaAd}`}
+                                                {userRole === "LECTURER" && `${user?.izleyiciAd} ${user?.izleyiciSoyad}`}
+                                                {userRole === "COMMISSION" && `${user?.komisyonAd} ${user?.komisyonSoyad}`}
+                                            </span>}
+
                                         </a>
                                     </li>
                                     {userRole === 'STUDENT' && (
                                         <>
-                                        <li className='hover:bg-light-blue duration-200 hover:text-dark-blue'>
+                                            <li className='hover:bg-light-blue duration-200 hover:text-dark-blue'>
                                                 <a href="/" className="flex items-center p-2 rounded-lg text-white hover:text-dark-blue group">
                                                     <IoHome className='text-2xl' />
                                                     <span className="flex-1 ms-3 whitespace-nowrap">Ana Sayfa</span>
@@ -170,7 +127,7 @@ function Sidebar() {
                                         </li>
                                     )}
 
-                                    { userRole === "COMMISSION" && (
+                                    {userRole === "COMMISSION" && (
                                         <li className='hover:bg-light-blue duration-200 hover:text-dark-blue'>
                                             <a href="/edit-student-groups" className="flex items-center p-2 rounded-lg text-white hover:text-dark-blue group">
                                                 <MdGroups className='text-2xl' />
@@ -182,7 +139,7 @@ function Sidebar() {
                                     )}
                                     {userRole === 'LECTURER' && (
                                         <li className='hover:bg-light-blue duration-200 hover:text-dark-blue'>
-                                            <a href= "/student-group"  className="flex items-center p-2 rounded-lg text-white hover:text-dark-blue group">
+                                            <a href="/student-group" className="flex items-center p-2 rounded-lg text-white hover:text-dark-blue group">
                                                 <MdGroups className='text-2xl' />
                                                 <span className="flex-1 ms-3 whitespace-nowrap">
                                                     Öğrenci Grupları
@@ -200,7 +157,7 @@ function Sidebar() {
                                             </li>
                                         </>
                                     )}
-                                    
+
                                     <li className='hover:bg-light-blue duration-200 hover:text-dark-blue'>
                                         <a href="#" className="flex items-center p-2 rounded-lg text-white hover:text-dark-blue">
                                             <IoIosMail className='text-2xl' />

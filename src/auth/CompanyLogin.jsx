@@ -3,7 +3,7 @@ import mainLogo from '../icons/gazi_university_logo.png';
 import { useDispatch } from 'react-redux';
 import { Toaster, toast } from 'sonner';
 import axios from 'axios';
-import { setUser, setUserRole } from '../store/auth';
+import { setRole, setUser, setUserRole } from '../store/auth';
 import rektorluk from '../icons/gazi_rektorluk.jpg';
 import { useNavigate } from 'react-router-dom';
 import ReCAPTCHA from "react-google-recaptcha";
@@ -39,7 +39,7 @@ function CompanyLogin() {
     // } else {
     try {
       const res = await axios.post('/auth/company-login', {
-        firmaNo: companyNumber,
+        firmaId: companyNumber,
         firmaParola: password,
       });
       if (res.status === 200) {
@@ -51,6 +51,8 @@ function CompanyLogin() {
         localStorage.setItem('userRole', 'COMPANY');
 
         dispatch(setUser(res.data));
+        dispatch(setRole("COMPANY"))
+
         navigate("/company-profile");
       }
     } catch (error) {

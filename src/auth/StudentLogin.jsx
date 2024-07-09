@@ -121,7 +121,7 @@ function StudentLogin() {
                 ref={recaptcha}
               />
               <div>
-                <button onClick={(e) => handleLogin(e)} type="submit"  className="disabled:cursor-not-allowed disabled:bg-slate-400 w-full flex justify-center py-2 px-4 border border-transparent rounded-md  text-sm font-medium  bg-dark-blue  shadow-sm text-white hover:bg-light-blue hover:text-dark-blue ">Giriş Yap</button>
+                <button onClick={(e) => handleLogin(e)} type="submit" id='loginBtn'  className="disabled:cursor-not-allowed disabled:bg-slate-400 w-full flex justify-center py-2 px-4 border border-transparent rounded-md  text-sm font-medium  bg-dark-blue  shadow-sm text-white hover:bg-light-blue hover:text-dark-blue ">Giriş Yap</button>
               </div>
             </form>
           </div>

@@ -3,7 +3,7 @@ import mainLogo from '../icons/gazi_university_logo.png';
 import { useDispatch } from 'react-redux';
 import { Toaster, toast } from 'sonner';
 import axios from 'axios';
-import { setUser, setUserRole } from '../store/auth';
+import { setRole, setUser, setUserRole } from '../store/auth';
 import rektorluk from '../icons/gazi_rektorluk.jpg';
 import { useNavigate } from 'react-router-dom';
 import ReCAPTCHA from "react-google-recaptcha";
@@ -68,6 +68,8 @@ function CommissionLogin() {
         localStorage.setItem('userRole', 'COMMISSION');
         
         dispatch(setUser(res.data)); 
+        dispatch(setRole("COMMISSION"))
+
         navigate("/commission-profile");
       }
     } catch (error) {

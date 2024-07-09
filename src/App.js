@@ -39,6 +39,7 @@ import CommissionEditProfile from "./commission/CommissionEditProfile";
 import EditStudentGroups from "./commission/EditStudentGroups";
 import SaveCompany from "./commission/SaveCompany";
 import CV from "./filesForPdf/CV";
+import PreApplication from "./forms/PreApplication";
 
 function App() {
   const { user } = useSelector(state => state.auth);
@@ -59,12 +60,13 @@ function App() {
 
         <Routes>
           <Route path="/upload-image" element={user != null ? <UploadImage /> : null} />
-
+        
           <Route path="/login" element={user===null ? <LoginOptions /> : null} />
           <Route path="/student-login" element={user===null ? <StudentLogin /> : null} />
           <Route path="/company-login" element={user===null ? <CompanyLogin /> : null} />
           <Route path="/lecturer-login" element={user===null ? <LecturerLogin /> : null} />
           <Route path="/commission-login" element={user===null ? <CommissionLogin /> : null} />
+          <Route path="/pre-application"  element= {<PreApplication />}  />
 
 
           <Route path="/access-denied" element={<AccessDenied />} />

@@ -76,8 +76,8 @@ function FavoriteAnnouncements() {
 
     <div  className='container mx-auto my-12  pt-5 z-40 grid-cols-1 w-1/4 text-xl  grid'>
       <div>
-        <h1  className='font-extrabold text-3xl '>Kaydettigim ilanlar</h1>
-        {favorites.length === 0 ? <h1  className='mt-6 text-slate-400'>Henuz favorilerinize eklediginiz ilan bulunmamakta ...</h1> : null}
+        <h1  className='font-extrabold text-3xl '>Kaydettiğim ilanlar</h1>
+        {favorites.length === 0 ? <h1  className='mt-6 text-slate-400'>Henüz favorilerinize eklediğiniz ilan bulunmamakta ...</h1> : null}
       </div>
       {
         pendingApiCall ?

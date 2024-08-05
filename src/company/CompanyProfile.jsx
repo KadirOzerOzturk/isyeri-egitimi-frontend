@@ -2,16 +2,23 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { CiEdit } from "react-icons/ci";
 import { TfiAnnouncement } from 'react-icons/tfi';
-import { useSelector } from 'react-redux';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import moment from "moment";
-import { FaUser } from 'react-icons/fa';
+import loadingIcon from "../icons/loadingIcon.gif"
+import {  setUserPhoto } from '../store/auth';
+
 
 function CompanyProfile() {
 
     const company = useSelector(state => state.auth.user)
-    const navigate = useNavigate()
+    const {userPhoto}=useSelector(state=>state.auth)
     const [announcements, setAnnouncements] = useState([])
+    const [profilePhoto,setProfilePhoto]=useState("")
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch();
+
     useEffect(() => {
         if (company) {
             axios.get(`/announcements/all/${company.firmaId}`)
@@ -23,6 +30,23 @@ function CompanyProfile() {
                     console.error("Error fetching comp:", error);
                 });
         }
+        const fetchProfilePhoto = async () => {
+            try {
+                const res = await axios.get(`s3-bucket/view/company-${company.firmaId}-profilePhoto`, { responseType: 'blob' });
+                const imageUrl = URL.createObjectURL(res.data);
+                console.log(imageUrl)
+                setProfilePhoto(imageUrl);
+                if(!userPhoto){
+                    dispatch(setUserPhoto(profilePhoto))
+                }
+        
+
+            } catch (error) {
+                console.error("Error fetching comp:", error);
+            }
+        };
+
+        fetchProfilePhoto();
     }, [company]);
 
     if (!company) {
@@ -43,9 +67,14 @@ function CompanyProfile() {
                             <div className="image h-24 w-24 overflow-hidden">
                                 
                                 
-                                {company.firmaLogo ? <img className="h-auto w-full mx-auto rounded-full "
-                                    src={company.firmaLogo }
-                                    alt="" /> :<FaUser/>}
+                            {profilePhoto ? <img className="h-full w-full rounded-full mx-auto "
+                                    src={profilePhoto}
+                                    alt="" /> :
+                                    <img className="h-full w-full rounded-full mx-auto "
+                                    src={loadingIcon}
+                                    alt="" />
+                                    
+                            }
                             </div>
                             <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">{company.firmaAd}</h1>
                             <h3 className="text-gray-600 font-lg text-semibold leading-6">{company.firmaHakkinda}</h3>

@@ -3,8 +3,8 @@ import { CiEdit } from "react-icons/ci";
 import { FaUser } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { CiLogout } from "react-icons/ci";
-import { logout, setUser } from '../store/auth';
+import loadingIcon from "../icons/loadingIcon.gif"
+import {  setUserPhoto } from '../store/auth';
 import axios from 'axios';
 import moment from 'moment';
 import { MdOutlineAppRegistration } from 'react-icons/md';
@@ -16,14 +16,15 @@ function StudentProfile() {
     const navigate = useNavigate()
     const { user } = useSelector(state => state.auth);
     const { userRole } = useSelector(state => state.auth);
+    const {userPhoto}=useSelector(state=>state.auth)
     const [cv, setCv] = useState()
     const [skills, setSkills] = useState([])
     const [applications, setApplications] = useState([]);
-    console.log(applications)
+    
     const dispatch = useDispatch();
     const [lecturer, setLecturer] = useState({})
     const [pendingApiCall, setPendingApiCall] = useState(true)
-
+    const [profilePhoto,setProfilePhoto]=useState("")
 
     useEffect(() => {
         if (user) {
@@ -49,11 +50,29 @@ function StudentProfile() {
                 .catch(error => {
                     console.error("Haftalik rapor yuklenirken hata oluştu:", error);
                 });
+                const fetchProfilePhoto = async () => {
+                    try {
+                        const res = await axios.get(`s3-bucket/view/student-${user.ogrenciNo}-profilePhoto`, { responseType: 'blob' });
+                        const imageUrl = URL.createObjectURL(res.data);
+                        console.log(imageUrl)
+                        setProfilePhoto(imageUrl);
+                        if(!userPhoto){
+                            dispatch(setUserPhoto(profilePhoto))
+                        }
+                
+
+                    } catch (error) {
+                        console.error("Error fetching comp:", error);
+                    }
+                };
+        
+                fetchProfilePhoto();
+        
 
         }
 
-    }, [user, dispatch])
-
+    }, [user,dispatch])
+    
 
     return (
         <>
@@ -66,9 +85,14 @@ function StudentProfile() {
 
                     <div className="bg-white p-3 border-t-4 border-dark-blue">
                         <div className="image my-4 h-36 w-36 overflow-hidden">
-                            <img className="h-auto w-full rounded-full mx-auto object-center "
-                                src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png"
-                                alt="" />
+                        {profilePhoto ? <img className="h-full w-full rounded-full mx-auto "
+                                    src={profilePhoto}
+                                    alt="" /> :
+                                    <img className="h-full w-full rounded-full mx-auto "
+                                    src={loadingIcon}
+                                    alt="" />
+                                    
+                            }
                         </div>
                         <div className='flex justify-between'>
                             <h1 className="text-gray-900 font-bold text-2xl leading-8 my-1">{user.ogrenciAd + " " + user.ogrenciSoyad} </h1>

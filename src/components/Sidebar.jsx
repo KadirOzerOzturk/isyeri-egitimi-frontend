@@ -3,7 +3,7 @@ import mainLogo from '../icons/gazi_university_logo.png';
 import { FaUser, FaBuilding, FaRegBookmark, FaRegListAlt } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import { IoIosMail, IoMdMenu } from "react-icons/io";
-import { FaWpforms } from "react-icons/fa6";
+import { FaFolder, FaWpforms } from "react-icons/fa6";
 import { RiSurveyFill } from "react-icons/ri";
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
@@ -18,7 +18,7 @@ import { IoHome } from 'react-icons/io5';
 import Navbar from "./Navbar";
 
 function Sidebar() {
-    console.log("SIDEBAAAARRRR")
+
 
 
     const navigate = useNavigate();
@@ -53,11 +53,11 @@ function Sidebar() {
         <>
 
             <div>
-                <Navbar />
+                
                 {isSidebarOpen ? (
-                    <div className='mr-3'>
-                        <IoMdMenu className='text-3xl ml-6 mt-3 cursor:pointer' onClick={toggleSidebar} />
-                    </div>
+                    
+                        <IoMdMenu className='text-3xl ml-6 mt-3 cursor:pointer w-8' onClick={toggleSidebar} />
+                  
                 ) : (
                     <aside id="logo-sidebar" className={`bg-dark-blue fixed top-0 left-0  ${isSidebarOpen ? 'w-48' : 'w-32 xl:w-48 2xl:w-64 '} h-screen transition-transform md-translate-x-full sm:translate-x-0`} aria-label="Sidebar">
                         <div className="flex flex-col h-full px-3 py-4 overflow-y-auto">
@@ -80,8 +80,7 @@ function Sidebar() {
                                             <FaUser className='text-xl' />
 
                                             {user&&<span className="ms-3">
-                                                {console.log("COMMISSION")}
-                                                {console.log(user)}
+                                                
                                                 {userRole === "STUDENT" && user?.ogrenciAd && user?.ogrenciSoyad && `${user.ogrenciAd} ${user.ogrenciSoyad}`}
                                                 {userRole === "COMPANY" && `${user?.firmaAd}`}
                                                 {userRole === "LECTURER" && `${user?.izleyiciAd} ${user?.izleyiciSoyad}`}
@@ -128,6 +127,7 @@ function Sidebar() {
                                     )}
 
                                     {userRole === "COMMISSION" && (
+                                        <>
                                         <li className='hover:bg-light-blue duration-200 hover:text-dark-blue'>
                                             <a href="/edit-student-groups" className="flex items-center p-2 rounded-lg text-white hover:text-dark-blue group">
                                                 <MdGroups className='text-2xl' />
@@ -136,6 +136,15 @@ function Sidebar() {
                                                 </span>
                                             </a>
                                         </li>
+                                         <li className='hover:bg-light-blue duration-200 hover:text-dark-blue'>
+                                         <a href="/student-forms" className="flex items-center p-2 rounded-lg text-white hover:text-dark-blue group">
+                                             <FaFolder className='text-2xl' />
+                                             <span className="flex-1 ms-3 whitespace-nowrap">
+                                                 Öğrenci Belgeleri
+                                             </span>
+                                         </a>
+                                     </li>
+                                     </>
                                     )}
                                     {userRole === 'LECTURER' && (
                                         <li className='hover:bg-light-blue duration-200 hover:text-dark-blue'>

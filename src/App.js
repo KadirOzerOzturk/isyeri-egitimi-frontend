@@ -40,6 +40,8 @@ import EditStudentGroups from "./commission/EditStudentGroups";
 import SaveCompany from "./commission/SaveCompany";
 import CV from "./filesForPdf/CV";
 import PreApplication from "./forms/PreApplication";
+import FileUploadPage from "./application/FormUploadPage";
+import StudentForms from "./application/StudentForms";
 
 function App() {
   const { user } = useSelector(state => state.auth);
@@ -50,7 +52,7 @@ function App() {
     <div  className="grid-cols-2">
 
       <div>
-      {/* <Navbar/> */}
+      <Navbar/> 
       {user&& <Sidebar />}
       </div>
       
@@ -67,6 +69,8 @@ function App() {
           <Route path="/lecturer-login" element={user===null ? <LecturerLogin /> : null} />
           <Route path="/commission-login" element={user===null ? <CommissionLogin /> : null} />
           <Route path="/pre-application"  element= {<PreApplication />}  />
+          <Route path="/file-upload"  element= {<FileUploadPage />}  />
+          <Route path="/student-forms"  element={user != null ? <StudentForms /> : null}   />
 
 
           <Route path="/access-denied" element={<AccessDenied />} />

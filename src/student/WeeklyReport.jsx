@@ -93,15 +93,14 @@ function WeeklyReport() {
         <div  className='flex container  mx-auto my-5 pl-24 pt-5 z-40 '>
             <div  className="w-1/3 ml-24 p-4">
                 <form  className="bg-white p-8 rounded-lg shadow-md">
-                    <h2  className="text-2xl font-semibold mb-4 text-gray-800">Weekly Report</h2>
-                    <div  className="mb-4">
-                        <label htmlFor="message"  className="block mb-2 text-lg font-medium text-gray-900 dark:text-white">Your message</label>
+                    <h2  className="text-2xl font-semibold mb-4 text-gray-800">Haftalık Rapor</h2>
+                    <div  className="mb-4 ">
+                        <label htmlFor="message"  className="block mb-2 text-lg font-medium text-gray-900 dark:text-white">Bu haftaki raporunuzu yazınız</label>
                         <textarea
                             onChange={(e) => setContent(e.target.value)}
                             id="message"
                             rows="4"
-                             className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Leave a comment..."
+                             className="block p-2.5 w-full text-md  text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             defaultValue={isUpdate ? changedReport.raporIcerigi : null}
                             required
                         ></textarea>
@@ -123,7 +122,7 @@ function WeeklyReport() {
                     <div key={index}  className='w-2/3 mb-4'>
                         <div  className="w-full px-4 py-2 bg-white rounded-lg shadow-md">
                             <div  className="flex justify-between items-center">
-                                <span  className="font-light text-gray-600">{moment(report.tarih).format("MM/DD/YYYY")}</span>
+                                <span  className="font-normal text-gray-600">{moment(report.tarih).format("MM/DD/YYYY")}</span>
                                 <span  className='cursor-pointer relative' onClick={(e) => handleDelete(e, report.raporId)}>
                                     <FaTrash  className='text-gray-500' />
                                     
@@ -131,13 +130,12 @@ function WeeklyReport() {
                             </div>
 
                             <div  className="mt-2">
-                                <p  className="mt-2 text-gray-600">{report.raporIcerigi}</p>
+                                <p  className="mt-2 font-semibold text-gray-600">{report.raporIcerigi}</p>
                             </div>
                             <div  className="flex justify-between items-center mt-4">
-                                <a  className="text-blue-600 hover:underline" onClick={(e) => handleEdit(e, report)} href="">Duzenle</a>
+                                <a  className="text-blue-600 hover:underline text-md" onClick={(e) => handleEdit(e, report)} href="">Düzenle</a>
                                 <div>
                                     <div onClick={()=>navigate(`/student-profile`)}  className="flex items-center cursor-pointer">
-                                        <img   className="mx-4 w-10 h-10 object-cover rounded-full hidden sm:block" src="https://i.pinimg.com/736x/ae/ec/c2/aeecc22a67dac7987a80ac0724658493.jpg" alt="avatar" />
                                         <h1  className="text-gray-700 font-bold">{report.ogrenci.ogrenciAd} {report.ogrenci.ogrenciSoyad}</h1>
                                     </div>
                                 </div>

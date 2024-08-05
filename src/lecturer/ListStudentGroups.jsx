@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { FaCheck, FaTrash, FaUser } from "react-icons/fa";
+import {  FaUser } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import { MdArrowDropDown, MdArrowDropUp } from "react-icons/md";
 import { useSelector } from 'react-redux';

@@ -3,7 +3,7 @@ import React from 'react'
 function Loading(props) {
   return (
     
-  <div className="absolute bg-white bg-opacity-60 z-10 min-h-full   w-full flex items-center justify-center">
+  <div className="absolute bg-white bg-opacity-60 z-10 min-h-full h-screen  w-full flex items-center justify-center">
   <div className="flex items-center">
     <span className="text-3xl mr-4">{props.text}</span>
     <svg className="animate-spin h-8 w-8 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none"

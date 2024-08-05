@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { FaUser } from 'react-icons/fa';
+import loadingIcon from "../icons/loadingIcon.gif"
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import AreYouSureModal from '../components/AreYouSureModal';
@@ -27,19 +28,34 @@ function ViewStudentProfile() {
     const { user } = useSelector(state => state.auth)
     const [lecturer, setLecturer] = useState({})
     const [handledApplicationId, setHandledApplicationId] = useState("")
+    const [profilePhoto,setProfilePhoto]=useState("")
+
     const navigate = useNavigate()
 
+    const fetchProfilePhoto = async () => {
+        try {
+            const res = await axios.get(`/s3-bucket/view/${studentNo}-profilePhoto`, { responseType: 'blob' });
+            const imageUrl = URL.createObjectURL(res.data);
+            console.log(imageUrl)
+            setProfilePhoto(imageUrl);
+           
+    
 
+        } catch (error) {
+            console.error("Error fetching comp:", error);
+        }
+    };
     useEffect(() => {
         axios.get(`/students/${studentNo}`)
             .then(res => {
                 setStudent(res.data);
                 setPendingApiCall(false)
-
+                
             })
             .catch(error => {
                 console.error("Error fetching comp:", error);
             });
+            fetchProfilePhoto()
         axios.get(`/skills/getSkills/${studentNo}`)
             .then((res) => {
                 if (res.status === 200) {
@@ -137,9 +153,16 @@ function ViewStudentProfile() {
                     <div className="w-full ">
                         <div className="bg-white p-3 border-t-4 border-dark-blue">
                             <div className="image h-24 w-24 overflow-hidden">
-                                <img className="h-full w-full rounded-full mx-auto "
-                                    src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png"
+                               
+                               {profilePhoto ? <img className="h-full w-full rounded-full mx-auto "
+                                    src={profilePhoto}
+                                    alt="" /> :
+                                    <img className="h-full w-full rounded-full mx-auto "
+                                    src={loadingIcon}
                                     alt="" />
+                                    
+                            }
+                                
                             </div>
                             <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">{student.ogrenciAd + " " + student.ogrenciSoyad}</h1>
                             <div>
